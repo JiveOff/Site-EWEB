@@ -1,0 +1,61 @@
+<template>
+  <div>
+    <b-navbar toggleable="lg" type="dark" style="
+      background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://www.tiz.fr/app/uploads/2019/08/reseaux-sociaux-tiz-2-scaled.jpeg');
+      width: 100%;
+      background-position-y: 15%;
+      border-bottom: 2px solid rgb(58, 85, 228);
+    ">
+      <b-navbar-brand><router-link to="/"><img src="@/assets/images/Logo-White.png" style="margin: 9px 20px 12px 10px; width: 134px" alt="Brigade des réseaux"></router-link></b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <div class="search-bar" style="margin-top: 0;">
+            <form>
+              <input type="text" name="search" placeholder="Rechercher..." v-model="$store.state.search" :input="$store.commit('changeSearch')">
+              <button @click="postMsg($event)"><i class="la la-search"></i></button>
+            </form>
+          </div>
+        </b-navbar-nav>
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item to="/">Accueil</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
+
+  <!--<header>
+    <div class="container">
+      <div class="header-data">
+        <div class="logo">
+          <router-link to="/"><img src="@/assets/images/Logo-White.png" style="margin: 20px; margin-top: 5px; width: 200px"></router-link>
+        </div>
+      </div>
+    </div>
+  </header>-->
+</template>
+
+<script>
+export default {
+  name: "Header",
+  methods: {
+    postMsg(ev) {
+      if(ev) ev.preventDefault();
+    }
+  }
+}
+</script>
+
+<style scoped>
+.navbar {
+  position: relative;
+}
+.navbar-brand {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px !important;  /* 50% of your logo width */
+  display: block;
+}
+</style>
