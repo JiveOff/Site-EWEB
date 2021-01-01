@@ -74,7 +74,7 @@
             <p v-if="reply.replying">En réponse à <span style="font-weight: 510">{{ reply.replyTo.user.nom }}</span> <button @click="reply.replying = false" style="margin-left: 5px;"><i class="la la-times"></i></button></p>
             <form style="display: flex; margin-top: 5px">
               <img src="https://cdn.frankerfacez.com/emoticon/281995/4" alt="" style="border-radius: 4px; width: 40px; height: 40px; margin-right: 10px;">
-              <input v-model="com" ref="commentaire" type="text" placeholder="Publier un commentaire...">
+              <input v-model="com" ref="commentaire" type="text" placeholder='Publier {{ reply.replying === true ? "une réponse" : "un commentaire" }}...'>
               <button @click="postMsg($event)">Publier {{ reply.replying === true ? "une réponse" : "un commentaire" }}</button>
             </form>
           </div>
