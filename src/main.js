@@ -94,13 +94,13 @@ const store = new Vuex.Store({
     ]
   },
   mutations: {
-    changeSearch(state) {
-      state.articlesToShow = state.articles.filter(article => state.search.length === 0
-          || article.post.content.toLowerCase().indexOf(state.search.toLowerCase()) > -1
-          || article.post.title.toLowerCase().indexOf(state.search.toLowerCase()) > -1
-          || article.post.tags.filter(word => word.toLowerCase().indexOf(state.search.toLowerCase()) > -1).length > 0)
+    changeSearch() {
+      this.state.articlesToShow = this.state.articles.filter(article => this.state.search.length === 0
+          || article.post.content.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
+          || (article.post.title && article.post.title.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1)
+          || (article.post.tags && article.post.tags.filter(word => word.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1).length > 0))
     }
-  }
+}
 })
 
 import Accueil from "@/components/Accueil";

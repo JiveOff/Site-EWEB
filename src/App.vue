@@ -45,7 +45,7 @@
                     <h3>Tendances en France</h3>
                   </div>
                   <div class="jobs-list">
-                    <div v-for="tendance in tendances" :key="tendance" class="job-info">
+                    <div v-for="tendance in tendances" :key="tendance.title" class="job-info">
                       <div class="job-details">
                         <h3>{{ tendance.title }}</h3>
                         <p>{{ tendance.desc }}</p>

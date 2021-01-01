@@ -14,8 +14,8 @@
         <b-navbar-nav>
           <div class="search-bar" style="margin-top: 0;">
             <form>
-              <input type="text" name="search" placeholder="Rechercher..." v-model="$store.state.search" :input="$store.commit('changeSearch')">
-              <button @click="postMsg($event)"><i class="la la-search"></i></button>
+              <input type="text" name="search" placeholder="Rechercher..." v-model="stringSearch">
+              <button @click="search($event)"><i class="la la-search"></i></button>
             </form>
           </div>
         </b-navbar-nav>
@@ -40,10 +40,20 @@
 <script>
 export default {
   name: "Header",
-  methods: {
-    postMsg(ev) {
-      if(ev) ev.preventDefault();
+  data() {
+    return {
+      stringSearch: ""
     }
+  },
+  methods: {
+    search(ev) {
+      if(ev) ev.preventDefault();
+      this.$store.state.search = this.stringSearch;
+      this.$store.commit('changeSearch')
+    }
+  },
+  created() {
+    this.$store.commit('changeSearch')
   }
 }
 </script>
