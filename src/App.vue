@@ -6,7 +6,7 @@
         <div class="container">
           <div class="main-section-data">
             <div class="row">
-              <div class="col-lg-2 col-md-4 pd-left-none no-pd">
+              <div class="col-lg-2 col-md-4 pd-left-none">
                 <div class="user-data full-width">
                   <div class="user-profile">
                     <div class="username-dt" style="background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://www.tiz.fr/app/uploads/2019/08/reseaux-sociaux-tiz-2-scaled.jpeg'); background-position-x: 39%; background-position-y: 50%;">
@@ -21,11 +21,11 @@
                   </div><!--user-profile end-->
                   <ul class="user-fw-status">
                     <li>
-                      <h4>Abonnements</h4>
+                      <h4 style="font-size: 15px">Abonnements</h4>
                       <span>1 134</span>
                     </li>
                     <li>
-                      <h4>Abonnés</h4>
+                      <h4 style="font-size: 15px">Abonnés</h4>
                       <span>20</span>
                     </li>
                   </ul>
@@ -40,7 +40,7 @@
                 <!--<div class="widget widget-about">
                   <router-link to="/"><img class="" src="@/assets/images/Logo-Site.png" style="width: 200px; margin-bottom: 20px;"></router-link>
                 </div>-->
-                <div class="widget widget-jobs" style="border-top: 4px solid #3a55e4">
+                <div class="widget widget-jobs" style="box-shadow: none; border-top: 4px solid #3a55e4">
                   <div class="sd-title">
                     <h3>Tendances en France</h3>
                   </div>

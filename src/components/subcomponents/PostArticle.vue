@@ -12,8 +12,8 @@
       </div>
       <div class="job_descp">
         <h3 v-if="article.post.title">{{ article.post.title }}</h3>
-        <p v-if="$route.fullPath == '/'"><span v-html="article.post.content.slice(0, 50) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
-        <p v-if="$route.fullPath !== '/'" style="word-wrap: anywhere;"><span v-html="article.post.content"></span></p>
+        <p v-if="$route.fullPath == '/' && article.post.content.length >= 50"><span v-html="article.post.content.slice(0, 50) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
+        <p v-else-if="article.post.content.length < 50" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0'} : {}]"><span v-html="article.post.content"></span></p>
         <ul class="skill-tags">
           <li v-for="tag in article.post.tags" :key="tag"><a href="#" title="">{{ tag }}</a></li>
         </ul>
@@ -22,10 +22,10 @@
         <ul class="like-com">
           <li>
             <a style="cursor: pointer;" @click="click(article)" :style="{ liked: article.post.liked }"><i class="la la-heart"></i> {{ article.post.liked ? "Déjà aimé" : "J'aime" }}</a>
-            <img src="@/assets/images/liked-img.png" alt="">
-            <span>{{ article.post.likes }}</span>
+            <img v-if="article.post.likes >= 5" src="@/assets/images/liked-img.png" alt="">
+            <span :style="[article.post.likes < 5 ? {'margin-left': '0'} : {}]">{{ article.post.likes }}</span>
           </li>
-          <li><router-link :to="'/post/' + article.id" title="" class="com"><img src="@/assets/images/com.png" alt=""> Commenter</router-link></li>
+          <li><router-link :to="'/post/' + article.id" title="" class="com"><img src="@/assets/images/com.png" alt=""> {{ article.comments.length }} commentaires</router-link></li>
         </ul>
         <a><i class="la la-eye"></i>{{ article.post.vues }} vues</a>
       </div>
@@ -35,7 +35,7 @@
         <div class="comment-sec">
           <ul>
             <li v-for="comment in article.comments" :key="comment">
-              <div class="comment-list">
+              <div class="comment-list" style="padding-bottom: 20px;">
                 <div class="bg-img">
                   <img :src="comment.user.profile" alt="" width="40px">
                 </div>
@@ -43,6 +43,7 @@
                   <h3>{{ comment.user.nom }}</h3>
                   <span><img src="@/assets/images/clock.png" alt="">Il y a {{ comment.comment.date }}</span>
                   <p>{{ comment.comment.content }}</p>
+                  <a style="cursor: pointer" @click="replyTo(comment)" class="active"><i class="fa fa-reply-all"></i>Répondre</a>
                 </div>
               </div>
               <ul>
@@ -62,14 +63,13 @@
             </li>
           </ul>
         </div>
-        <div class="post-comment">
-          <div class="cm_img">
-            <img src="https://cdn0.iconfinder.com/data/icons/gcons-2/24/silhouette5-512.png" alt="" width="40px">
-          </div>
+        <div class="post-comment" style="border-top: 1px solid #e5e5e5; padding-top: 11px;">
           <div class="comment_box">
-            <form>
-              <input type="text" placeholder="Commenter..." id="commenter">
-              <button type="submit">Envoyer</button>
+            <p v-if="reply.replying">En réponse à <span style="font-weight: 510">{{ reply.replyTo.user.nom }}</span> <button @click="reply.replying = false" style="margin-left: 5px;"><i class="la la-times"></i></button></p>
+            <form style="display: flex; margin-top: 5px">
+              <img src="https://cdn.frankerfacez.com/emoticon/281995/4" alt="" style="border-radius: 4px; width: 40px; height: 40px; margin-right: 10px;">
+              <input v-model="com" type="text" placeholder="Poster un commentaire...">
+              <button @click="postMsg($event)">Poster un commentaire</button>
             </form>
           </div>
         </div>
@@ -82,7 +82,80 @@
 export default {
   name: "PostArticle",
   props: ["article"],
+  data() {
+    return {
+      com: "",
+      reply: {
+        replying: false,
+        replyTo: null
+      }
+    }
+  },
   methods: {
+    replyTo(com) {
+      this.reply.replying = true;
+      this.reply.replyTo = com;
+    },
+    postMsg(ev) {
+      if(ev) ev.preventDefault();
+
+      if(this.com.length === 0) {
+        this.$swal({
+          toast: true,
+          position: 'top-end',
+          icon: 'error',
+          title: 'Vous devez écrire un commentaire...',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        return;
+      }
+
+      if(this.reply.replying) {
+        if(!this.reply.replyTo.sub) {
+          this.reply.replyTo.sub = []
+        }
+        this.reply.replyTo.sub.push({
+          user: {
+            profile: "https://cdn.frankerfacez.com/emoticon/281995/4",
+            nom: "Jean Dupont"
+          },
+          comment: {
+            date: "1 seconde",
+            content: this.com
+          }
+        })
+        this.$swal({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: 'Votre réponse a été publiée!',
+          showConfirmButton: false,
+          timer: 3000
+        })
+      } else {
+        this.$props.article.comments.push({
+          user: {
+            profile: "https://cdn.frankerfacez.com/emoticon/281995/4",
+            nom: "Jean Dupont"
+          },
+          comment: {
+            date: "1 seconde",
+            content: this.com
+          }
+        })
+        this.$swal({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: 'Votre commentaire a été publié!',
+          showConfirmButton: false,
+          timer: 3000
+        })
+      }
+
+      this.com = ""
+    },
     click(article) {
       if(!article.post.liked) {
         article.post.likes++;
@@ -114,5 +187,17 @@ export default {
 }
 .liked {
   color: #3a55e4 !important;
+}
+button {
+  color: #fff;
+  background-color: #c6c6c6;
+  padding: 0 5px;
+  text-align: center;
+  font-size: 12px;
+  border: 0;
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
 }
 </style>

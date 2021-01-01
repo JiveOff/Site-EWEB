@@ -27,7 +27,6 @@ const store = new Vuex.Store({
         post: {
           date: "3 minutes",
           title: "La censure des politiques",
-          link: "censure",
           likes: 11,
           liked: false,
           vues: "3k",
@@ -57,7 +56,6 @@ const store = new Vuex.Store({
         post: {
           date: "1 heure",
           title: "L'anonymat",
-          link: "anonymat",
           likes: 40,
           liked: false,
           vues: "5.1k",
