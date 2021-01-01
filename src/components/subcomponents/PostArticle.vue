@@ -26,7 +26,7 @@
             <img v-if="article.post.likes >= 5" src="@/assets/images/liked-img.png" alt="">
             <span :style="[article.post.likes < 5 ? {'margin-left': '0'} : {}]">{{ article.post.likes }}</span>
           </li>
-          <li><router-link :to="'/post/' + article.id" title="" class="com"><img src="@/assets/images/com.png" alt=""> {{ article.comments.length }} commentaires</router-link></li>
+          <li><router-link :to="'/post/' + article.id" title="" class="com"><img src="@/assets/images/com.png" alt=""> {{ article.comments.length }} commentaire{{ article.comments.length === 0 || article.comments.length > 1 ? "s" : "" }}</router-link></li>
         </ul>
         <a><i class="la la-eye"></i>{{ article.post.vues }} vues</a>
       </div>
@@ -35,7 +35,7 @@
       <div v-if="$route.fullPath !== '/'" class="comment-section">
         <div class="comment-sec">
           <ul>
-            <li v-for="comment in article.comments" :key="comment">
+            <li v-for="comment in article.comments" :key="comment" style="border-bottom: 1px solid rgb(229, 229, 229); margin-bottom: 17px;">
               <div class="comment-list" style="padding-bottom: 20px;">
                 <div class="bg-img">
                   <img :src="comment.user.profile" alt="" width="40px">
@@ -44,7 +44,7 @@
                   <h3>{{ comment.user.nom }}</h3>
                   <span><img src="@/assets/images/clock.png" alt="">{{ dateMoment(comment.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(comment.comment.date).fromNow().slice(1) }}</span>
                   <p style="word-wrap: anywhere;">{{ comment.comment.content }}</p>
-                  <a style="cursor: pointer" @click="replyTo(comment)" class="active"><i class="fa fa-reply-all"></i>Répondre</a>
+                  <!--<a style="cursor: pointer" @click="replyTo(comment)" class="active"><i class="fa fa-reply-all"></i>Répondre</a>-->
                 </div>
               </div>
               <ul>
@@ -61,10 +61,15 @@
                   </div>
                 </li>
               </ul>
+              <div class="comment-list" style="padding-bottom: 20px;">
+                <div class="comment">
+                  <a style="cursor: pointer" @click="replyTo(comment)" class="active"><i class="fa fa-reply-all"></i>Répondre</a>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
-        <div class="post-comment" :class="{ 'border-show': article.comments.length > 0 }">
+        <div class="post-comment">
           <div class="comment_box">
             <p v-if="reply.replying">En réponse à <span style="font-weight: 510">{{ reply.replyTo.user.nom }}</span> <button @click="reply.replying = false" style="margin-left: 5px;"><i class="la la-times"></i></button></p>
             <form style="display: flex; margin-top: 5px">
@@ -210,9 +215,5 @@ button {
   cursor: pointer;
   font-weight: 600;
   border-radius: 4px;
-}
-.border-show {
-  border-top: 1px solid rgb(229, 229, 229);
-  padding-top: 11px;
 }
 </style>
