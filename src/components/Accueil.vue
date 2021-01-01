@@ -15,7 +15,7 @@
     <transition-group  name="slide-fade" mode="out-in">
       <PostArticle v-for="article in $store.state.articlesToShow" :key="article" :article="article" transition="stagger" stagger="100"></PostArticle>
     </transition-group>
-    <div v-if="$store.state.articlesToShow.length === 0" style="font-size: 20px; color: #999; text-align: center;">Aucun post trouvé pour "{{ $store.state.search }}"</div>
+    <div v-if="$store.state.articlesToShow.length === 0" style="font-size: 20px; color: #999; text-align: center; word-wrap: anywhere;">Aucun post trouvé pour "{{ $store.state.search }}"</div>
   </div>
 </template>
 
