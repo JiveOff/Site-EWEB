@@ -6,22 +6,22 @@
           <img :src="article.user.profile" alt="" width="40px">
           <div class="usy-name">
             <h3>{{ article.user.nom }}</h3>
-            <span><img src="@/assets/images/clock.png" alt=""> Posté il y a {{ article.post.date }}</span>
+            <span><img src="@/assets/images/clock.png" alt=""> Posté {{ dateMoment(article.post.date).fromNow() }}</span>
           </div>
         </div>
       </div>
       <div class="job_descp">
         <h3 v-if="article.post.title">{{ article.post.title }}</h3>
-        <p v-if="$route.fullPath == '/' && article.post.content.length >= 50"><span v-html="article.post.content.slice(0, 50) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
+        <p v-if="$route.fullPath == '/' && article.post.content.length >= 50" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0'} : {}]"><span v-html="article.post.content.slice(0, 50) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
         <p v-else-if="article.post.content.length < 50" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0'} : {}]"><span v-html="article.post.content"></span></p>
         <ul class="skill-tags">
-          <li v-for="tag in article.post.tags" :key="tag"><a href="#" title="">{{ tag }}</a></li>
+          <li v-for="tag in article.post.tags" :key="tag"><a title="">{{ tag }}</a></li>
         </ul>
       </div>
       <div class="job-status-bar">
         <ul class="like-com">
           <li>
-            <a style="cursor: pointer;" @click="click(article)" :style="{ liked: article.post.liked }"><i class="la la-heart"></i> {{ article.post.liked ? "Déjà aimé" : "J'aime" }}</a>
+            <a style="cursor: pointer;" @click="click(article)" :class="{ liked: article.post.liked }"><i class="la la-heart"></i> {{ article.post.liked ? "Aimé" : "J'aime" }}</a>
             <img v-if="article.post.likes >= 5" src="@/assets/images/liked-img.png" alt="">
             <span :style="[article.post.likes < 5 ? {'margin-left': '0'} : {}]">{{ article.post.likes }}</span>
           </li>
@@ -41,8 +41,8 @@
                 </div>
                 <div class="comment">
                   <h3>{{ comment.user.nom }}</h3>
-                  <span><img src="@/assets/images/clock.png" alt="">Il y a {{ comment.comment.date }}</span>
-                  <p>{{ comment.comment.content }}</p>
+                  <span><img src="@/assets/images/clock.png" alt="">{{ dateMoment(comment.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(comment.comment.date).fromNow().slice(1) }}</span>
+                  <p style="word-wrap: anywhere;">{{ comment.comment.content }}</p>
                   <a style="cursor: pointer" @click="replyTo(comment)" class="active"><i class="fa fa-reply-all"></i>Répondre</a>
                 </div>
               </div>
@@ -54,8 +54,8 @@
                     </div>
                     <div class="comment">
                       <h3>{{ sub.user.nom }}</h3>
-                      <span><img src="@/assets/images/clock.png" alt="">Il y a {{ sub.comment.date }}</span>
-                      <p>{{ sub.comment.content }}</p>
+                      <span><img src="@/assets/images/clock.png" alt="">{{ dateMoment(sub.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(sub.comment.date).fromNow().slice(1) }}</span>
+                      <p style="word-wrap: anywhere;">{{ sub.comment.content }}</p>
                     </div>
                   </div>
                 </li>
@@ -63,13 +63,13 @@
             </li>
           </ul>
         </div>
-        <div class="post-comment" style="border-top: 1px solid #e5e5e5; padding-top: 11px;">
+        <div class="post-comment" :class="{ 'border-show': article.comments.length > 0 }">
           <div class="comment_box">
             <p v-if="reply.replying">En réponse à <span style="font-weight: 510">{{ reply.replyTo.user.nom }}</span> <button @click="reply.replying = false" style="margin-left: 5px;"><i class="la la-times"></i></button></p>
             <form style="display: flex; margin-top: 5px">
               <img src="https://cdn.frankerfacez.com/emoticon/281995/4" alt="" style="border-radius: 4px; width: 40px; height: 40px; margin-right: 10px;">
-              <input v-model="com" type="text" placeholder="Poster un commentaire...">
-              <button @click="postMsg($event)">Poster un commentaire</button>
+              <input v-model="com" ref="commentaire" type="text" placeholder="Poster un commentaire...">
+              <button @click="postMsg($event)">Poster {{ reply.replying === true ? "une réponse" : "un commentaire" }}</button>
             </form>
           </div>
         </div>
@@ -82,6 +82,11 @@
 export default {
   name: "PostArticle",
   props: ["article"],
+  created() {
+    setInterval(() => {
+      this.$forceUpdate();
+    }, 10e3)
+  },
   data() {
     return {
       com: "",
@@ -92,9 +97,19 @@ export default {
     }
   },
   methods: {
-    replyTo(com) {
+    dateMoment(date) {
+      return this.moment(date).locale('fr')
+    },
+    async replyTo(com) {
       this.reply.replying = true;
       this.reply.replyTo = com;
+      const el = this.$el.getElementsByClassName('comment_box')[0];
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          this.$refs.commentaire.focus();
+        }, 1e3)
+      }
     },
     postMsg(ev) {
       if(ev) ev.preventDefault();
@@ -121,7 +136,7 @@ export default {
             nom: "Jean Dupont"
           },
           comment: {
-            date: "1 seconde",
+            date: Date.now(),
             content: this.com
           }
         })
@@ -140,7 +155,7 @@ export default {
             nom: "Jean Dupont"
           },
           comment: {
-            date: "1 seconde",
+            date: Date.now(),
             content: this.com
           }
         })
@@ -157,17 +172,12 @@ export default {
       this.com = ""
     },
     click(article) {
-      if(!article.post.liked) {
+      if(article.post.liked) {
+        article.post.likes--;
+        article.post.liked = false;
+      } else {
         article.post.likes++;
         article.post.liked = true;
-        this.$swal({
-          toast: true,
-          position: 'top-end',
-          icon: 'success',
-          title: 'Vous avez like le post.',
-          showConfirmButton: false,
-          timer: 3000
-        })
       }
     }
   }
@@ -199,5 +209,9 @@ button {
   cursor: pointer;
   font-weight: 600;
   border-radius: 4px;
+}
+.border-show {
+  border-top: 1px solid rgb(229, 229, 229);
+  padding-top: 11px;
 }
 </style>

@@ -53,7 +53,7 @@ export default {
           nom: "Jean Dupont"
         },
         post: {
-          date: "1 seconde",
+          date: Date.now(),
           likes: 0,
           liked: false,
           vues: "0",

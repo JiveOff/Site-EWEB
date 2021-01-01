@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router';
 import VueSwal from 'vue-sweetalert2'
 import BootstrapVue from "bootstrap-vue";
+import moment from 'moment'
 
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -12,6 +13,8 @@ Vue.use(BootstrapVue);
 Vue.use(VueSwal)
 Vue.use(Vuex);
 Vue.use(VueRouter);
+
+Vue.prototype.moment = moment
 
 const store = new Vuex.Store({
   state: {
@@ -25,7 +28,7 @@ const store = new Vuex.Store({
           nom: "Antoine Banha"
         },
         post: {
-          date: "3 minutes",
+          date: 1609462959424,
           title: "La censure des politiques",
           likes: 11,
           liked: false,
@@ -41,7 +44,7 @@ const store = new Vuex.Store({
               nom: "Antoine Banha"
             },
             comment: {
-              date: "6 minutes",
+              date: 1609462959424,
               content: "Pourquoi avoir fait une chose pareille???"
             }
           }
@@ -54,7 +57,7 @@ const store = new Vuex.Store({
           nom: "Zakaria Sellam"
         },
         post: {
-          date: "1 heure",
+          date: 1609462959424,
           title: "L'anonymat",
           likes: 40,
           liked: false,
@@ -70,7 +73,7 @@ const store = new Vuex.Store({
               nom: "Antoine Banha"
             },
             comment: {
-              date: "6 minutes",
+              date: 1609462959424,
               content: "Pourquoi avoir fait une chose pareille???"
             },
             sub: [
@@ -80,7 +83,7 @@ const store = new Vuex.Store({
                   nom: "Antoine Banha"
                 },
                 comment: {
-                  date: "6 minutes",
+                  date: 1609462959424,
                   content: "parce que c des cons"
                 }
               }
