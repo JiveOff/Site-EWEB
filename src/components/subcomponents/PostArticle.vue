@@ -6,7 +6,7 @@
           <img :src="article.user.profile" alt="" width="40px">
           <div class="usy-name">
             <h3>{{ article.user.nom }}</h3>
-            <span><img src="@/assets/images/clock.png" alt=""> Posté {{ dateMoment(article.post.date).fromNow() }}</span>
+            <span><img src="@/assets/images/clock.png" alt=""> Publié {{ dateMoment(article.post.date).fromNow() }}</span>
           </div>
         </div>
       </div>
