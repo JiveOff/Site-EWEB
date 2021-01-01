@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="post-topbar" v-if="$route.fullPath === '/'">
-
       <div class="container">
         <div class="comment_box">
           <form style="display: flex;">
@@ -12,10 +11,10 @@
         </div>
       </div>
     </div>
+    <div v-if="$store.state.articlesToShow.length === 0" style="font-size: 20px; color: #999; text-align: center; word-wrap: anywhere;">Aucun post trouvé pour "{{ $store.state.search }}"</div>
     <transition-group  name="slide-fade" mode="out-in">
       <PostArticle v-for="article in $store.state.articlesToShow" :key="article.id" :article="article" transition="stagger" stagger="100"></PostArticle>
     </transition-group>
-    <div v-if="$store.state.articlesToShow.length === 0" style="font-size: 20px; color: #999; text-align: center; word-wrap: anywhere;">Aucun post trouvé pour "{{ $store.state.search }}"</div>
   </div>
 </template>
 
