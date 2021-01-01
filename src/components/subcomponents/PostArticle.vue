@@ -12,8 +12,9 @@
       </div>
       <div class="job_descp">
         <h3 v-if="article.post.title">{{ article.post.title }}</h3>
-        <p v-if="$route.fullPath == '/' && article.post.content.length >= 50" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0'} : {}]"><span v-html="article.post.content.slice(0, 50) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
-        <p v-else-if="article.post.content.length < 50" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0'} : {}]"><span v-html="article.post.content"></span></p>
+        <p v-if="$route.fullPath === '/' && article.post.content.length >= 50" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0'} : {}]"><span v-html="article.post.content.slice(0, 50) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
+        <p v-else-if="$route.fullPath === '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0'} : {}]"><span v-html="article.post.content"></span></p>
+        <p v-else-if="$route.fullPath !== '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0'} : {}]"><span v-html="article.post.content"></span></p>
         <ul class="skill-tags">
           <li v-for="tag in article.post.tags" :key="tag"><a title="">{{ tag }}</a></li>
         </ul>
