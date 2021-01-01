@@ -9,7 +9,7 @@
               <div class="col-lg-2 col-md-4 pd-left-none">
                 <div class="user-data full-width">
                   <div class="user-profile">
-                    <div class="username-dt" style="background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://www.tiz.fr/app/uploads/2019/08/reseaux-sociaux-tiz-2-scaled.jpeg'); background-position-x: 39%; background-position-y: 50%;">
+                    <div class="username-dt" style="background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://i.jiveoff.fr/CpJcK.jpg'); background-position-x: 39%; background-position-y: 50%;">
                       <div class="usr-pic">
                         <img src="https://cdn.frankerfacez.com/emoticon/281995/4" alt="" width="100px" height="110px" style="background-color: #fff">
                       </div>
@@ -62,6 +62,7 @@
         </div>
       </div>
     </main>
+    <Footer />
   </div>
 </template>
 
@@ -77,11 +78,13 @@ import '@/assets/css/style.css'
 import '@/assets/css/responsive.css'
 
 import Header from '@/components/partials/Header'
+import Footer from "@/components/partials/Footer";
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    Footer
   },
   data() {
     return {
@@ -118,6 +121,11 @@ export default {
 </script>
 
 <style>
+#app {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
 .slide-fade-enter-active {
   transition: all .5s ease;
 }

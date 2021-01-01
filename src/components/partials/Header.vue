@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" style="
-      background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://www.tiz.fr/app/uploads/2019/08/reseaux-sociaux-tiz-2-scaled.jpeg');
+      background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://i.jiveoff.fr/CpJcK.jpg');
       width: 100%;
       background-position-y: 15%;
       border-bottom: 2px solid rgb(58, 85, 228);
