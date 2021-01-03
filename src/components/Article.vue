@@ -15,6 +15,19 @@ export default {
     return {
       article: this.$store.state.articles.find(article => article.id.toString() === this.$route.params.id.toString())
     }
+  },
+  created() {
+    if(!this.article) {
+      this.$router.push("/")
+      this.$swal({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: "Ce post n'existe pas.",
+        showConfirmButton: false,
+        timer: 3000
+      })
+    }
   }
 }
 </script>

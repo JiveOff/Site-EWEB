@@ -4,7 +4,7 @@
       <div class="container">
         <div class="comment_box">
           <form style="display: flex;">
-            <img :src="$store.state.users[0].profile" alt="" style="border-radius: 4px; width: 40px; height: 40px; margin-right: 10px;">
+            <img :src="$store.state.users[$store.state.loggedInUser].profile" alt="" style="border-radius: 4px; width: 40px; height: 40px; margin-right: 10px;">
             <input v-model="msg" type="text" placeholder="Poster un message...">
             <button @click="postMsg($event)">Poster un message</button>
           </form>
@@ -47,7 +47,7 @@ export default {
 
       this.$store.state.articles.unshift({
         id: Date.now(),
-        user: 0,
+        user: this.$store.state.loggedInUser,
         post: {
           date: Date.now(),
           likes: 0,

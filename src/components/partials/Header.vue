@@ -26,16 +26,6 @@
       </b-collapse>
     </b-navbar>
   </div>
-
-  <!--<header>
-    <div class="container">
-      <div class="header-data">
-        <div class="logo">
-          <router-link to="/"><img src="@/assets/images/Logo-White.png" style="margin: 20px; margin-top: 5px; width: 200px"></router-link>
-        </div>
-      </div>
-    </div>
-  </header>-->
 </template>
 
 <script>

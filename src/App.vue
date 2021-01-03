@@ -16,12 +16,12 @@
                   <div class="user-profile">
                     <div class="username-dt" style="background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://i.jiveoff.fr/CpJcK.jpg'); background-position-x: 39%; background-position-y: 50%;">
                       <div class="usr-pic">
-                        <img :src="$store.state.users[0].profile" alt="" width="100px" height="110px" style="background-color: #fff">
+                        <img :src="$store.state.users[$store.state.loggedInUser].profile" alt="" width="100px" height="110px" style="background-color: #fff">
                       </div>
                     </div><!--username-dt end-->
                     <div class="user-specs">
-                      <h3>{{ $store.state.users[0].nom }}</h3>
-                      <span>@{{ $store.state.users[0].nom.slice(0, 1) + $store.state.users[0].nom.split(" ")[1] }}</span>
+                      <h3>{{ $store.state.users[$store.state.loggedInUser].nom }}</h3>
+                      <span>@{{ $store.state.users[$store.state.loggedInUser].nom.slice(0, 1) + $store.state.users[$store.state.loggedInUser].nom.split(" ")[1] }}</span>
                     </div>
                   </div><!--user-profile end-->
                   <ul class="user-fw-status">
@@ -83,6 +83,20 @@ export default {
   components: {
     Header,
     Footer
+  },
+  created() {
+    setTimeout(() => {
+      console.log(this.$auth.isAuthenticated)
+      if(this.$auth.isAuthenticated) {
+        if(this.$store.state.loggedInUser === 0) {
+          this.$store.state.users.push({
+            nom: this.$auth.user.name,
+            profile: this.$auth.user.picture
+          })
+          this.$store.state.loggedInUser = this.$store.state.users.length - 1
+        }
+      }
+    }, 5e3)
   },
   data() {
     return {
