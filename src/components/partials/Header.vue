@@ -15,7 +15,8 @@
           <div class="search-bar" style="margin-top: 0;">
             <form>
               <input type="text" name="search" placeholder="Rechercher..." v-model="stringSearch">
-              <button @click="search($event)"><i class="la la-search"></i></button>
+              <button @click="search($event)"><i class="la la-search"></i>
+              </button>
             </form>
           </div>
         </b-navbar-nav>

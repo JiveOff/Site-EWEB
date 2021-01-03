@@ -10,7 +10,7 @@
 	.widget-about span {font-size: 13px;}
 	.suggestion-usd {padding: 15px 5px;}
 	.cp-sec p {margin-top: 10px;float: none;}
-	.comment_box input {width: 281px;}
+	.comment_box input {width: 400px;}
 	.job-details {width: 112px;}
 	.job-details h3 {line-height: 18px;}
 	.sd-title h3 {font-size: 15px;}
@@ -89,7 +89,7 @@
 @media (max-width: 768px) {
 	.login_register {display: none;}
 	.forum-bar ul {float: right;}
-	.comment_box input {width: 84%;}
+	.comment_box input {width: 100%;}
 	.comment_box {width: 88%;}
 	.no-pd {padding: 0;}
 	.sign-in-page {padding: 60px 0;}

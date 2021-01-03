@@ -4,7 +4,7 @@
       <div class="container">
         <div class="comment_box">
           <form style="display: flex;">
-            <img src="https://cdn.frankerfacez.com/emoticon/281995/4" alt="" style="border-radius: 4px; width: 40px; height: 40px; margin-right: 10px;">
+            <img :src="$store.state.users[0].profile" alt="" style="border-radius: 4px; width: 40px; height: 40px; margin-right: 10px;">
             <input v-model="msg" type="text" placeholder="Poster un message...">
             <button @click="postMsg($event)">Poster un message</button>
           </form>
@@ -47,10 +47,7 @@ export default {
 
       this.$store.state.articles.unshift({
         id: Date.now(),
-        user: {
-          profile: "https://cdn.frankerfacez.com/emoticon/281995/4",
-          nom: "Jean Dupont"
-        },
+        user: 0,
         post: {
           date: Date.now(),
           likes: 0,

@@ -6,17 +6,22 @@
         <div class="container">
           <div class="main-section-data">
             <div class="row">
-              <div class="col-lg-2 col-md-4 pd-left-none">
+              <div class="col-lg-9 col-md-9 no-pd">
+                <transition name="slide-fade" mode="out-in">
+                  <router-view></router-view>
+                </transition>
+              </div>
+              <div class="col-lg-3 pd-right-none no-pd">
                 <div class="user-data full-width">
                   <div class="user-profile">
                     <div class="username-dt" style="background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://i.jiveoff.fr/CpJcK.jpg'); background-position-x: 39%; background-position-y: 50%;">
                       <div class="usr-pic">
-                        <img src="https://cdn.frankerfacez.com/emoticon/281995/4" alt="" width="100px" height="110px" style="background-color: #fff">
+                        <img :src="$store.state.users[0].profile" alt="" width="100px" height="110px" style="background-color: #fff">
                       </div>
                     </div><!--username-dt end-->
                     <div class="user-specs">
-                      <h3>Jean Dupont</h3>
-                      <span>@JDupont</span>
+                      <h3>{{ $store.state.users[0].nom }}</h3>
+                      <span>@{{ $store.state.users[0].nom.slice(0, 1) + $store.state.users[0].nom.split(" ")[1] }}</span>
                     </div>
                   </div><!--user-profile end-->
                   <ul class="user-fw-status">
@@ -30,13 +35,6 @@
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div class="col-lg-7 col-md-8 no-pd">
-                <transition name="slide-fade" mode="out-in">
-                  <router-view></router-view>
-                </transition>
-              </div>
-              <div class="col-lg-3 pd-right-none no-pd">
                 <!--<div class="widget widget-about">
                   <router-link to="/"><img class="" src="@/assets/images/Logo-Site.png" style="width: 200px; margin-bottom: 20px;"></router-link>
                 </div>-->
@@ -92,7 +90,7 @@ export default {
         {
           title: "#reconfinement",
           popularity: "3M",
-          desc: "ENCORE UN CONFINEMENT?!"
+          desc: "ENCORE UN RECONFINEMENT?!"
         },
         {
           title: "Bonne Année 2021",
@@ -136,5 +134,11 @@ export default {
   /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateY(10px);
   opacity: 0;
+}
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 </style>

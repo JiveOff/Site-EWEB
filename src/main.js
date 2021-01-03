@@ -8,9 +8,11 @@ import BootstrapVue from "bootstrap-vue";
 import moment from 'moment'
 
 import 'sweetalert2/dist/sweetalert2.min.css';
+import VueExpandableImage from 'vue-expandable-image'
 
+Vue.use(VueExpandableImage);
 Vue.use(BootstrapVue);
-Vue.use(VueSwal)
+Vue.use(VueSwal);
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
@@ -20,68 +22,73 @@ const store = new Vuex.Store({
   state: {
     search: "",
     articlesToShow: [],
+    users: [
+      {
+        nom: "Jean Dupont",
+        profile: "https://cdn.frankerfacez.com/emoticon/281995/4"
+      },
+      {
+        nom: "Antoine Banha",
+        profile: "https://i.jiveoff.fr/VsOv6.jpg"
+      },
+      {
+        nom: "Zakaria Sellam",
+        profile: "https://cdn.discordapp.com/avatars/362631494197444611/f45099902da7a4a8965473d00265b092.png?size=40"
+      },
+      {
+        nom: "Donald Trump",
+        verified: true,
+        profile: "https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_normal.jpg"
+      }
+    ],
     articles: [
       {
         id: "censure",
-        user: {
-          profile: "https://i.jiveoff.fr/VsOv6.jpg",
-          nom: "Antoine Banha"
-        },
+        user: 3,
         post: {
-          date: 1609462959424,
-          title: "La censure des politiques",
-          likes: 11,
+          date: "2020-11-16T04:55:48.821Z",
+          likes: 0,
           liked: false,
-          vues: "3k",
-          tags: [ "StopCensure", "LaPolitiqueCDeLaMerde" ],
+          vues: 1501201,
+          tags: [],
+          images: [],
           content:
-              "<b>lol</b>"
+              "<h2>I WON THE ELECTIONS!</h2>"
         },
         comments: [
           {
-            user: {
-              profile: "https://i.jiveoff.fr/VsOv6.jpg",
-              nom: "Antoine Banha"
-            },
+            user: 1,
             comment: {
               date: 1609462959424,
-              content: "Pourquoi avoir fait une chose pareille???"
+              content: "C'est bien pour cela qu'il faut limiter la parole."
             }
           }
         ]
       },
       {
         id: "anonymat",
-        user: {
-          profile: "https://cdn.discordapp.com/avatars/362631494197444611/f45099902da7a4a8965473d00265b092.png?size=40",
-          nom: "Zakaria Sellam"
-        },
+        user: 1,
         post: {
           date: 1609462959424,
           title: "L'anonymat",
           likes: 40,
           liked: false,
-          vues: "5.1k",
+          vues: 5012,
           tags: [ "StopCensure" ],
+          images: [ "https://picsum.photos/200/300", "https://picsum.photos/200/200", "https://picsum.photos/300/300" ],
           content:
               "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         },
         comments: [
           {
-            user: {
-              profile: "https://i.jiveoff.fr/VsOv6.jpg",
-              nom: "Antoine Banha"
-            },
+            user: 1,
             comment: {
               date: 1609462959424,
               content: "Pourquoi avoir fait une chose pareille???"
             },
             sub: [
               {
-                user: {
-                  profile: "https://i.jiveoff.fr/VsOv6.jpg",
-                  nom: "Antoine Banha"
-                },
+                user: 2,
                 comment: {
                   date: 1609462959424,
                   content: "parce que c des cons"
