@@ -7,6 +7,8 @@ import VueSwal from 'vue-sweetalert2'
 import BootstrapVue from "bootstrap-vue";
 import moment from 'moment'
 
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import 'sweetalert2/dist/sweetalert2.min.css';
 import VueExpandableImage from 'vue-expandable-image'
 
@@ -52,15 +54,17 @@ const store = new Vuex.Store({
           vues: 1501201,
           tags: [],
           images: [],
-          content:
-              "<h2>I WON THE ELECTIONS!</h2>"
+          content: "I WON THE ELECTIONS!",
+          warning: "Des sources fiables ont certifié que Joe Biden a remporté les élections présidentielles américaines de 2020."
         },
         comments: [
           {
             user: 1,
             comment: {
               date: 1609462959424,
-              content: "C'est bien pour cela qu'il faut limiter la parole."
+              content: "Ah bah bravo la fake news Monsieur le Président Américain..." +
+                  "<br/><br/>La fake news est quasi omni-présente dans les réseaux sociaux aujourd'hui, mais on ne s'attend vraiment pas à que cela vienne du président d'une des plus grands puissances du monde." +
+                  "Le petit symbole \"Profil vérifié\" juste après le nom du président est remis en cause en "
             }
           }
         ]

@@ -5,16 +5,20 @@
         <div class="usy-dt">
           <img :src="$store.state.users[article.user].profile" alt="" width="40px">
           <div class="usy-name">
-            <h3>{{ $store.state.users[article.user].nom }}</h3>
+            <h3>{{ $store.state.users[article.user].nom }} <i v-if="$store.state.users[article.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
             <span><img src="@/assets/images/clock.png" alt=""> Publié {{ dateMoment(article.post.date).fromNow() }}</span>
           </div>
         </div>
       </div>
       <div class="job_descp">
         <h3 v-if="article.post.title">{{ article.post.title }}</h3>
-        <p v-if="$route.fullPath === '/' && article.post.content.length >= 50" :style="[article.post.tags.length === 0 ? {'margin-bottom': '10px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content.slice(0, 50) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
-        <p v-else-if="$route.fullPath === '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '10px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
-        <p v-else-if="$route.fullPath !== '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '10px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
+        <p v-if="$route.fullPath === '/' && article.post.content.length >= 50" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content.slice(0, 50) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
+        <p v-else-if="$route.fullPath === '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
+        <p v-else-if="$route.fullPath !== '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
+        <p v-if="article.post.warning" style="border-top: 1px solid #3a55e4; padding-top: 10px; color: #3a55e4; font-weight: 401">
+          <i class="fa fa-warning" style="margin-right: 10px;"></i><i>Des sources fiables ont certifié que Joe Biden a remporté les élections présidentielles américaines de 2020.</i>
+        </p>
+
         <ul class="skill-tags" style="display: contents">
           <li v-for="tag in article.post.tags" :key="tag" :class="{ 'margin-masonry': article.post.images }"><a>{{ tag }}</a></li>
         </ul>
@@ -50,7 +54,7 @@
                 <div class="comment">
                   <h3>{{ $store.state.users[comment.user].nom }}</h3>
                   <span><img src="@/assets/images/clock.png" alt="">{{ dateMoment(comment.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(comment.comment.date).fromNow().slice(1) }}</span>
-                  <p style="word-wrap: anywhere;">{{ comment.comment.content }}</p>
+                  <p style="word-wrap: anywhere;" v-html="comment.comment.content"></p>
                   <!--<a style="cursor: pointer" @click="replyTo(comment)" class="active"><i class="fa fa-reply-all"></i>Répondre</a>-->
                 </div>
               </div>
@@ -63,7 +67,7 @@
                     <div class="comment">
                       <h3>{{ $store.state.users[sub.user].nom }}</h3>
                       <span><img src="@/assets/images/clock.png" alt="">{{ dateMoment(sub.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(sub.comment.date).fromNow().slice(1) }}</span>
-                      <p style="word-wrap: anywhere;">{{ sub.comment.content }}</p>
+                      <p style="word-wrap: anywhere;" v-html="sub.comment.content"></p>
                     </div>
                   </div>
                 </li>

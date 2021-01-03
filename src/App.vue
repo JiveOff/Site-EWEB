@@ -11,7 +11,7 @@
                   <router-view></router-view>
                 </transition>
               </div>
-              <div class="col-lg-3 pd-right-none no-pd">
+              <div class="col-lg-3 col-md-3 pd-right-none side">
                 <div class="user-data full-width">
                   <div class="user-profile">
                     <div class="username-dt" style="background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://i.jiveoff.fr/CpJcK.jpg'); background-position-x: 39%; background-position-y: 50%;">
@@ -139,6 +139,9 @@ export default {
   .container {
     padding-left: 0;
     padding-right: 0;
+  }
+  .side {
+    padding: 0;
   }
 }
 </style>
