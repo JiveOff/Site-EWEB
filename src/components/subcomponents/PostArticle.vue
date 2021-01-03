@@ -37,7 +37,7 @@
             <img v-if="article.post.likes >= 5" src="@/assets/images/liked-img.png" alt="">
             <span :style="[article.post.likes < 5 ? {'margin-left': '0'} : {}]">{{ article.post.likes }}</span>
           </li>
-          <li><router-link :to="'/post/' + article.id" title="" class="com"><img src="@/assets/images/com.png" alt=""> {{ article.comments.length }} commentaire{{ article.comments.length === 0 || article.comments.length > 1 ? "s" : "" }}</router-link></li>
+          <li><router-link :to="'/post/' + article.id" title="" class="com"><img src="@/assets/images/com.png" alt=""> {{ getCommentsArticle() }} commentaire{{ getCommentsArticle() === 0 || getCommentsArticle() > 1 ? "s" : "" }}</router-link></li>
         </ul>
         <a><i class="la la-eye"></i>{{ Number(article.post.vues).toLocaleString() }} vue{{ article.post.vues === 0 || article.post.vues > 1 ? "s" : "" }}</a>
       </div>
@@ -118,6 +118,16 @@ export default {
     }
   },
   methods: {
+    getCommentsArticle() {
+      let coms = 0;
+      for(let com in this.$props.article.comments) {
+        coms++;
+        if(this.$props.article.comments[com]['sub']) {
+          coms = coms + this.$props.article.comments[com]['sub'].length;
+        }
+      }
+      return coms;
+    },
     dateMoment(date) {
       return this.moment(date).locale('fr')
     },
