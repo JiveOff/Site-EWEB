@@ -85,13 +85,25 @@ const store = new Vuex.Store({
         nom: "Salim",
         profile: "https://i.jiveoff.fr/6jEDo.zjE1s4iDnj3dYPVPcHXe0BvYuQI32BPhswwiJh5HoEmZQT2MlZ1CESa9kbMKosqpD9eLsvf62dsgF6ffQzODPKmN6jIqzsfdGNFsLY_q7ooaKb3vBVtD4LznTaqDEXYy1IClE6ti"
       },
+      // 13
       {
         nom: "Marion",
         profile: "https://i.jiveoff.fr/wWsSl.4EzUomscVI0cNO1JHfHpQ0-7S7vGuen-lc6byt8kNPN2-awlGROF2YwSwVM8u9Q_x1nzu2K-KDZouISfLJdK4Kdi6Pa__PU7vjCg9BRjkBlZqUffIWpbjbqDcGz5GpcaPwLUCyYv"
       },
+      // 14
       {
         nom: "Kevin",
         profile: "https://i.jiveoff.fr/zy5CT.y0zuYgHaKEXpwS4ff19Y9OyznFDUjVnvALJBPfngiN-8-b5BgaF8dBcun9FX9MXpSTr0Y-CPge0-6CDuEvR6lrvaAmnTfmXutvBeuH3Tanz9Rub6PT5rBZl5cjbm8_hVstI4HxOB"
+      },
+      // 15
+      {
+        nom: "Adam Smith",
+        profile: "https://pbs.twimg.com/profile_images/2528322953/image_normal.jpg"
+      },
+      // 16
+      {
+        nom: "Trump Pardoned The Swamp 🗝",
+        profile: "https://pbs.twimg.com/profile_images/1337437080973144066/yq3DtN1b_normal.jpg"
       }
     ],
     articles: [
@@ -112,7 +124,7 @@ const store = new Vuex.Store({
           {
             user: 1,
             comment: {
-              date: 1609462959424,
+              date: "2020-12-16T04:55:48.821Z",
               content: "Ah bah bravo la fake news Monsieur le Président Américain..." +
                   "<br/><br/>La fake news est quasi omni-présente dans les réseaux sociaux aujourd'hui, mais on ne s'attend vraiment pas à que cela vienne du président d'une des plus grands puissances du monde." +
                   "<br/>Que veut dire ce symbole \"Profil vérifié\" juste après le nom du président quand nous retrouvons de la fake news sur ce même profil?"
@@ -121,11 +133,25 @@ const store = new Vuex.Store({
               {
                 user: 2,
                 comment: {
-                  date: 1609462959424,
+                  date: "2020-12-19T04:55:48.821Z",
                   content: "C'est un symbole permettant de retrouver les personnalités publiques... et pourquoi Twitter ne pourrais pas bannir le président du réseau social? Il ne font rien contre la fake news?"
                 }
               }
             ]
+          },
+          {
+            user: 15,
+            comment: {
+              date: "2020-11-17T04:55:48.821Z",
+              content: "4 years ago -- but not this year. Move on b/c we are.<br /><br />You're done and we're done with you."
+            }
+          },
+          {
+            user: 16,
+            comment: {
+              date: "2020-12-06T04:55:48.821Z",
+              content: "No, you lost. By a huge margin.<br /><br />I like presidents that don't incite violence."
+            }
           }
         ]
       },
