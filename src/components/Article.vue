@@ -27,7 +27,9 @@ export default {
         showConfirmButton: false,
         timer: 3000
       })
+      return;
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 }
 </script>

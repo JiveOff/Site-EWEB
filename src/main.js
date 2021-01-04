@@ -65,9 +65,9 @@ const store = new Vuex.Store({
         profile: "https://cdn.discordapp.com/attachments/781424707060760576/795322108350562324/poutchfleur.png"
       },
       {
-        nom: "Axel",
-        job: "Lycéen",
-        profile: "https://i.jiveoff.fr/xo0Pu.-pztSBeRCw-HIpCtNXNmeMaX_9MHkMCJ9gE-VcSWu_B2hLk0RUAtL9YU4AVoEjZhL7oQLZdhgv5y5fm_ltad36E3TuRYGgH7Yf7kAlaTAJLyiys6etSivapFItp9ZjbTD1nMbILk"
+        nom: "Nahean Badar",
+        job: "Étudiante",
+        profile: "https://i.jiveoff.fr/1CE0X.png"
       },
       {
         nom: "Robert",
@@ -122,7 +122,7 @@ const store = new Vuex.Store({
       },
       // 20
       {
-        nom: "Arvinde",
+        nom: "Arvinde Senguttuvan",
         profile: "https://i.jiveoff.fr/7XImk.png"
       },
       // 21
@@ -284,7 +284,7 @@ const store = new Vuex.Store({
         id: "lois",
         user: 8,
         post: {
-          date: "2020-11-16T04:55:48.821Z",
+          date: "2020-12-20T04:55:48.821Z",
           likes: 6,
           liked: false,
           vues: 53,

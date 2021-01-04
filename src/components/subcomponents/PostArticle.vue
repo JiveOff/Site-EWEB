@@ -15,8 +15,8 @@
         <p v-if="$route.fullPath === '/' && article.post.content.length >= 200" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content.slice(0, 200) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
         <p v-else-if="$route.fullPath === '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
         <p v-else-if="$route.fullPath !== '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
-        <p v-if="article.post.warning" style="border-top: 1px solid #3a55e4; padding-top: 10px; color: #3a55e4; font-weight: 401; cursor: pointer" @click="$router.push('/post/' + article.id)">
-          <i class="fa fa-warning" style="margin-right: 10px;"></i><i>{{ article.post.warning }}</i>
+        <p v-if="article.post.warning" style="border-top: 1px solid #3a55e4; padding-top: 10px; color: #3a55e4; font-weight: 401; cursor: pointer;" @click="$router.push('/post/' + article.id)">
+          <i class="fa fa-warning" style="margin-right: 10px;"></i><i style="word-wrap: anywhere; white-space: normal;">{{ article.post.warning }}</i>
         </p>
 
         <ul class="skill-tags" style="display: contents; cursor: pointer" @click="$router.push('/post/' + article.id)">
@@ -30,7 +30,7 @@
           </template>
         </vue-masonry-wall>
       </div>
-      <div class="job-status-bar">
+      <div class="job-status-bar" v-if="!header">
         <ul class="like-com">
           <li>
             <a style="cursor: pointer;" @click="click(article)" :class="{ liked: article.post.liked }"><i class="la la-heart"></i> {{ article.post.liked ? "Aimé" : "J'aime" }}</a>
@@ -101,7 +101,7 @@ import VueMasonryWall from "vue-masonry-wall";
 export default {
   name: "PostArticle",
   components: {VueMasonryWall},
-  props: ["article"],
+  props: ["article", "header"],
   created() {
     setInterval(() => {
       this.$forceUpdate();

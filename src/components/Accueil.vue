@@ -29,6 +29,9 @@ export default {
       msg: ""
     }
   },
+  created() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  },
   methods: {
     postMsg(ev) {
       if(ev) ev.preventDefault();
