@@ -104,6 +104,21 @@ const store = new Vuex.Store({
       {
         nom: "Trump Pardoned The Swamp 🗝",
         profile: "https://pbs.twimg.com/profile_images/1337437080973144066/yq3DtN1b_normal.jpg"
+      },
+      // 17
+      {
+        nom: "Wasth",
+        profile: "https://i.jiveoff.fr/HEfRg.jpg"
+      },
+      // 18
+      {
+        nom: "Luiz",
+        profile: "https://i.jiveoff.fr/9xHIp.png"
+      },
+      // 19
+      {
+        nom: "Chou-fleur",
+        profile: "https://i.jiveoff.fr/uSKW5.jpg"
       }
     ],
     articles: [
@@ -160,14 +175,13 @@ const store = new Vuex.Store({
         user: 7,
         post: {
           date: 1609006707000,
-          title: "Les réseaux sociaux et les peintures de nus: un mauvais match.",
           likes: 27,
           liked: false,
           vues: 564,
           tags: [],
           images: [],
           content:
-              "Ils sont connus pour avoir la censure facile face à des photos de torses féminins, considérés comme « contenu pornographique », mais ils ne s’arrêtent pas là et vont jusqu’à supprimer des photos de peintures où ils apparaissent. En effet, dernièrement, les internautes ont pu voir leurs partages de La liberté guidant le peuple ou L’Origine du monde se faire supprimer par les plateformes. "
+              "Les réseaux sociaux sont connus pour avoir la censure facile face à des photos de torses féminins, considérés comme « contenu pornographique », mais ils vont parfois jusqu’à supprimer des photos de peintures où ils apparaissent. Dernièrement, on a pu voir leurs partages de La liberté guidant le peuple ou L’Origine du monde se faire supprimer par les plateformes… Qu’en pensez-vous ?"
         },
         comments: [
           {
@@ -181,18 +195,32 @@ const store = new Vuex.Store({
                 user: 5,
                 comment: {
                   date: 1609462959424,
-                  content: "Je suis en études d’art et réalise souvent du nu, que je montre sur mon compte Instagram. Aucun de mes dessins n’a été supprimé, cependant, de ce que j’ai pu observer, cela dépend énormément de l’audience : si une publication se fait signaler, elle va alerter le réseau social qui va se pencher dessus et la « passer au peigne fin ». Là, dans la plupart des cas, elle se fait supprimer. Cela arrive souvent pour les gros comptes, par exemple Charlie Danger a vu une de ses stories se faire supprimer suite à des signalements… pour avoir montré la couverture d’un livre où apparait une illustration de sein. La photo d’une impression d’une peinture de sein s’est fait censurer."
+                  content: "Je suis en études d’art et réalise souvent du nu, que je montre sur mon compte Instagram. Aucun de mes dessins n’a été supprimé, cependant, de ce que j’ai pu observer, cela dépend énormément de l’audience : si une publication se fait signaler, elle va alerter le réseau social qui va se pencher dessus et la « passer au peigne fin ». Là, dans la plupart des cas, elle se fait supprimer."
+                }
+              },
+              {
+                user: 19,
+                comment: {
+                  date: 1609462959424,
+                  content: "Oui, ça arrive souvent pour les gros comptes, par exemple Charlie Danger a vu une de ses stories se faire supprimer suite à des signalements… pour avoir montré la couverture d’un livre où apparait une illustration de sein. La photo d’une impression d’une peinture de sein s’est fait censurer."
                 }
               }
             ]
           },
           {
-            user: 0,
+            user: 17,
             comment: {
               date: 1609265907000,
-              content: "Mais ce n’est pas tout: le message passé derrière l’œuvre a aussi son importance dans la censure, comme c’est particulièrement le cas pour les BD. Encore vu comme étant destiné aux enfants, le 9e art est celui qui se fait le plus censurer sur les réseaux sociaux à cause des signalements des internautes."
+              content: "Mais le message passé derrière l’œuvre a aussi son importance dans la censure, comme c’est particulièrement le cas pour les BD. Elles sont encore vues comme destinées aux enfants, donc cet art est celui qui se fait le plus censurer sur les réseaux sociaux à cause des signalements des internautes. "
             },
             sub: [
+              {
+                user: 18,
+                comment: {
+                  date: 1609462959424,
+                  content: "J’ai vu que la pub d’une BD traitant d’homosexualité s’était fait censurer à cause de l’affiche, qui ne montrait pourtant pas de contenu pornographique…"
+                }
+              },
               {
                 user: 6,
                 comment: {
