@@ -119,6 +119,47 @@ const store = new Vuex.Store({
       {
         nom: "Chou-fleur",
         profile: "https://i.jiveoff.fr/uSKW5.jpg"
+      },
+      // 20
+      {
+        nom: "Arvinde",
+        profile: "https://i.jiveoff.fr/7XImk.png"
+      },
+      // 21
+      {
+        nom: "Maxime",
+        profile: "https://i.jiveoff.fr/q5Epz.png"
+      },
+      // 22
+      {
+        nom: "Yannis",
+        profile: "https://i.jiveoff.fr/wX4Ai.png"
+      },
+      // 23
+      {
+        nom: "Levi",
+        profile: "https://i.jiveoff.fr/BdWmw.png"
+      },
+      // 24
+      {
+        nom: "bongo37",
+        profile: "https://i.jiveoff.fr/5nyrB.png"
+      },
+      // 25
+      {
+        nom: "Philippe",
+        profile: "https://i.jiveoff.fr/TcBt7.png"
+      },
+      // 26
+      {
+        nom: "Fred",
+        job: "Modérateur du site",
+        profile: "https://i.jiveoff.fr/inUc9.png"
+      },
+      // 27
+      {
+        nom: "Lisa",
+        profile: "https://i.jiveoff.fr/jcmwJ.png"
       }
     ],
     articles: [
@@ -347,6 +388,79 @@ const store = new Vuex.Store({
             comment: {
               date: 1609462959424,
               content: "Eh oui les gars! Donc vous feriez mieux de contrôler votre langue avant de publier, partager, commenter ou même de simplement liker un contenu biaisé."
+            }
+          }
+        ]
+      },
+      {
+        id: "forums",
+        user: 20,
+        post: {
+          date: "2020-12-28T04:55:48.821Z",
+          likes: 7,
+          liked: false,
+          vues: 51,
+          tags: [],
+          images: [],
+          content: "J’entends beaucoup parler des forums comme 4chan et des réactions négatives qu’ils suscitent auprès de la presse et de l’opinion publique. Quelqu’un pourrait m’éclairer ? ",
+        },
+        comments: [
+          {
+            user: 21,
+            comment: {
+              date: "2020-12-28T04:55:48.821Z",
+              content: "4chan est un forum rempli de « trolls » dangereux et malfaisants, il permet de communiquer sur le site de manière anonyme, ce qui incite aux contenus très polémique et/ou racistes de façon relativement discrète."
+            },
+            sub: [
+              {
+                user: 22,
+                comment: {
+                  date: "2020-12-29T04:55:48.821Z",
+                  content: "Et ce n'est pas tout, ce genre de forum contient une culture fermée au monde ce qui soude ses membres et incite au lynchage de masse si vous n’adhérez pas à ce type de “secte”. C'est vraiment déplorable."
+                }
+              },
+              {
+                user: 23,
+                comment: {
+                  date: "2020-12-29T04:55:48.821Z",
+                  content: "J’ai connu ça… Je comparerais ce comportement aux ruches des abeilles. Faites du mal à la ruche et c'est tout une colonie que vous ramènerez contre vous..."
+                }
+              },
+              {
+                user: 0,
+                comment: {
+                  date: "2020-12-30T04:55:48.821Z",
+                  content: "Je suis d'accord mais c’est là qu’on peut y trouver une certaine liberté culturelle d’expression comme avec la création des mèmes, ces blagues sur internet massivement partagées."
+                }
+              },
+              {
+                user: 24,
+                comment: {
+                  date: "2020-12-30T04:55:48.821Z",
+                  content: "4chan est vraiment une poubelle numérique, pour un bon message il y a surtout 100 posts débiles. #cancel4chan"
+                }
+              },
+              {
+                user: 25,
+                comment: {
+                  date: "2020-12-30T04:55:48.821Z",
+                  content: "Je pense que ce genre de site doit continuer d’exister mais les abus existants doivent être mieux contrôlées. En attendant, comme le célèbre adage d’Internet le dit : « Don’t feed the troll » ne donnez pas d’attention à quelqu’un derrière son écran qui cherche à perdre ton temps."
+                }
+              }
+            ]
+          },
+          {
+            user: 26,
+            comment: {
+              date: "2020-12-30T04:55:48.821Z",
+              content: "Je dois dire qu’on trouve de nombreux problèmes concernant la liberté d’expression, même sur ce site. Théoriquement, on a le droit d’écrire ce que l’on pense seulement si cela ne va pas nuire à autrui. Mais une minorité ne respectent pas les règles comme avec les trolls dont vous parlez notamment."
+            }
+          },
+          {
+            user: 27,
+            comment: {
+              date: "2021-01-02T04:55:48.821Z",
+              content: "Les forums internet peuvent être des réseaux merveilleux ou l’on trouve de tout. De la cuisine, du divertissement, ou bien des réponses aux questions que nous nous posons et bien d’autres encore. Je pense que la grande majorité des utilisateurs de forums se comportent bien et nous ne devons pas l'oublier."
             }
           }
         ]
