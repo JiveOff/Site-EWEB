@@ -15,17 +15,17 @@
       </div>
       <div class="job_descp">
         <h3 v-if="article.post.title" @click="$router.push('/post/' + article.id)" style="cursor: pointer">{{ article.post.title }}</h3>
-        <p v-if="$route.fullPath === '/' && article.post.content.length >= 200" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content.slice(0, 200) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
-        <p v-else-if="$route.fullPath === '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
-        <p v-else-if="$route.fullPath !== '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '15px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
-        <p v-if="article.post.warning" style="border-top: 1px solid #3a55e4; padding-top: 10px; color: #3a55e4; font-weight: 401; cursor: pointer;" @click="$router.push('/post/' + article.id)">
+        <p v-if="$route.fullPath === '/' && article.post.content.length >= 200" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content.slice(0, 200) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
+        <p v-else-if="$route.fullPath === '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
+        <p v-else-if="$route.fullPath !== '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
+        <p v-if="article.post.warning" style="border-top: 1px solid #3a55e4; padding-top: 10px; color: #3a55e4; font-weight: 401; cursor: pointer; margin-top: 15px; margin-bottom: 0px;" @click="$router.push('/post/' + article.id)">
           <i class="fa fa-warning" style="margin-right: 10px;"></i><i style="word-wrap: anywhere; white-space: normal;">{{ article.post.warning }}</i>
         </p>
 
         <ul class="skill-tags" style="display: contents; cursor: pointer" @click="$router.push('/post/' + article.id)">
           <li v-for="tag in article.post.tags" :key="tag" :class="{ 'margin-masonry': article.post.images }"><a>{{ tag }}</a></li>
         </ul>
-        <vue-masonry-wall :items="article.post.images" :options="{width: 300, padding: {2: 8, default: 12}}">
+        <vue-masonry-wall v-if="article.post.images && article.post.images.length > 0" :items="article.post.images" :options="{width: 300, padding: {2: 8, default: 12}}">
           <template v-slot:default="{item}">
             <div class="item">
               <expandable-image :src="item" style="max-width: 100%" />

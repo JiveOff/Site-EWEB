@@ -29,7 +29,7 @@ export default {
       })
       return;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 10)
   }
 }
 </script>
