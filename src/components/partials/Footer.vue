@@ -4,10 +4,10 @@
       Site crée à l'aide de Vue.js et Bootstrap.
     </div>
     <div style="font-size: 15px; color: #999; text-align: center; margin-bottom: 20px;">
-      Projet EWEB<br/><img :src="require('@/assets/images/Logo-Site.png')" style="margin: 20px 20px 10px; width: 6%; float: none;">
+      Projet EWEB de DUT Informatique (1ère Année)<br/><img :src="require('@/assets/images/Logo-Site.png')" style="margin: 20px 20px 10px; width: 7%; float: none;">
     </div>
     <div style="font-size: 15px; color: #999; text-align: center; margin-bottom: 20px;">
-      <a href="https://github.com/JiveOff" style="font-weight: 501">@JiveOff</a>
+      <a href="https://github.com/JiveOff" style="font-weight: 501">@JiveOff</a> • <a style="cursor: pointer;" @click="$router.push('/')">Accueil</a>
     </div>
   </footer>
 </template>
