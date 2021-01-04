@@ -32,9 +32,7 @@
       border-bottom: 2px solid rgb(58, 85, 228);
     ">
         <b-navbar-brand style="text-align: left; position: inherit; left: 0; margin-left: auto !important; margin-right: auto; width: 26em">
-          <h2 style="text-align: center; font-size: 64px; margin-bottom: 25px; margin-top: 25px; font-family: 'Bebas Neue', cursive;">
-            CECI EST UNE FAKE NEWS.
-          </h2>
+          <h2 style="text-align: center; font-size: 64px; margin-bottom: 25px; margin-top: 25px; font-family: 'Bebas Neue', cursive;">CECI EST UNE FAKE NEWS.</h2>
           <PostArticle :article="$store.state.articles.filter(art => art.id === 'censure')[0]" header="true" /></b-navbar-brand>
       </b-navbar>
     </transition>

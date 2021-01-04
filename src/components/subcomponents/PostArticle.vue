@@ -6,7 +6,7 @@
           <span :id="component_uid + '-author-' + article.id" :style="{ 'background-image': 'url(' + $store.state.users[article.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
           <div class="usy-name">
             <h3 :class="{ 'margin-nom': header }">{{ $store.state.users[article.user].nom }} <i v-if="$store.state.users[article.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
-            <span><span v-if="$store.state.users[article.user].job" style="display: inline;">{{ $store.state.users[article.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> Publié {{ dateMoment(article.post.date).fromNow() }}</span>
+            <span><span v-if="$store.state.users[article.user].job" style="display: inline;">{{ $store.state.users[article.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> {{ dateMoment(article.post.date).fromNow().charAt(0).toUpperCase() + dateMoment(article.post.date).fromNow().slice(1) }}</span>
           </div>
           <b-popover :ref="component_uid + '-authorpop-' + article.id" :target="component_uid + '-author-' + article.id" placement="top">
             <ProfilePop :article="article" :header="header" />
