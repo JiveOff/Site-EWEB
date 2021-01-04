@@ -5,7 +5,7 @@
         <div class="usy-dt">
           <span :style="{ 'background-image': 'url(' + $store.state.users[article.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
           <div class="usy-name">
-            <h3 style="margin-bottom: 7px;">{{ $store.state.users[article.user].nom }} <i v-if="$store.state.users[article.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
+            <h3 :class="{ 'margin-nom': header }">{{ $store.state.users[article.user].nom }} <i v-if="$store.state.users[article.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
             <span><span v-if="$store.state.users[article.user].job" style="display: inline;">{{ $store.state.users[article.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> Publié {{ dateMoment(article.post.date).fromNow() }}</span>
           </div>
         </div>
@@ -237,5 +237,8 @@ button {
 }
 .margin-masonry {
   margin-bottom: 20px !important;
+}
+.margin-nom {
+  margin-bottom: 0px !important;
 }
 </style>

@@ -35,7 +35,7 @@
           <h2 style="text-align: center; font-size: 64px; margin-bottom: 25px; margin-top: 25px; font-family: 'Bebas Neue', cursive;">
             CECI EST UNE FAKE NEWS.
           </h2>
-          <PostArticle :article="$store.state.articles[0]" header="true" /></b-navbar-brand>
+          <PostArticle :article="$store.state.articles.filter(art => art.id === 'censure')[0]" header="true" /></b-navbar-brand>
       </b-navbar>
     </transition>
   </div>
