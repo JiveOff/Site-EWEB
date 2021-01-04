@@ -32,10 +32,12 @@ const store = new Vuex.Store({
       },
       {
         nom: "Antoine Banha",
+        job: "Étudiant",
         profile: "https://i.jiveoff.fr/VsOv6.jpg"
       },
       {
         nom: "Zakaria Sellam",
+        job: "Étudiant",
         profile: "https://cdn.discordapp.com/avatars/362631494197444611/f45099902da7a4a8965473d00265b092.png?size=40"
       },
       {
@@ -62,6 +64,7 @@ const store = new Vuex.Store({
       },
       {
         nom: "itagura (Inès)",
+        job: "Étudiante",
         profile: "https://cdn.discordapp.com/attachments/781424707060760576/795322108350562324/poutchfleur.png"
       },
       {
@@ -102,7 +105,7 @@ const store = new Vuex.Store({
       },
       // 16
       {
-        nom: "Trump Pardoned The Swamp 🗝",
+        nom: "John Faith",
         profile: "https://pbs.twimg.com/profile_images/1337437080973144066/yq3DtN1b_normal.jpg"
       },
       // 17
@@ -123,6 +126,7 @@ const store = new Vuex.Store({
       // 20
       {
         nom: "Arvinde Senguttuvan",
+        job: "Étudiant",
         profile: "https://i.jiveoff.fr/7XImk.png"
       },
       // 21

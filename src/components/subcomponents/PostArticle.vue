@@ -2,12 +2,15 @@
   <div class="posty" style="margin-bottom: 20px">
     <div class="post-bar no-margin">
       <div class="post_topbar" style="border-top: 4px solid #3a55e4">
-        <div class="usy-dt">
-          <span :style="{ 'background-image': 'url(' + $store.state.users[article.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
+        <div class="usy-dt" @mouseover="openPop(component_uid + '-authorpop-' + article.id)" @mouseleave="closePop(component_uid + '-authorpop-' + article.id)">
+          <span :id="component_uid + '-author-' + article.id" :style="{ 'background-image': 'url(' + $store.state.users[article.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
           <div class="usy-name">
             <h3 :class="{ 'margin-nom': header }">{{ $store.state.users[article.user].nom }} <i v-if="$store.state.users[article.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
             <span><span v-if="$store.state.users[article.user].job" style="display: inline;">{{ $store.state.users[article.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> Publié {{ dateMoment(article.post.date).fromNow() }}</span>
           </div>
+          <b-popover :ref="component_uid + '-authorpop-' + article.id" :target="component_uid + '-author-' + article.id" placement="top">
+            <ProfilePop :article="article" :header="header" />
+          </b-popover>
         </div>
       </div>
       <div class="job_descp">
@@ -48,12 +51,15 @@
           <ul>
             <li v-for="comment in article.comments" :key="comment" style="border-bottom: 1px solid rgb(229, 229, 229); margin-bottom: 17px;">
               <div class="comment-list" style="padding-bottom: 20px;">
-                <div class="bg-img">
+                <div :id="comment.id + '-author'" class="bg-img" @mouseover="openPop(comment.id + '-authorpop')" @mouseleave="closePop(comment.id + '-authorpop')">
                   <span :style="{ 'background-image': 'url(' + $store.state.users[comment.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
                 </div>
+                <b-popover :ref="comment.id + '-authorpop'" :target="comment.id + '-author'" placement="top">
+                  <ProfilePop :article="comment" :header="header" />
+                </b-popover>
                 <div class="comment">
-                  <h3 style="margin-bottom: 6px;">{{ $store.state.users[comment.user].nom }} <i v-if="$store.state.users[comment.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
-                  <span><span v-if="$store.state.users[comment.user].job" style="display: inline;">{{ $store.state.users[comment.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> {{ dateMoment(comment.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(comment.comment.date).fromNow().slice(1) }}</span>
+                  <h3 @mouseover="openPop(comment.id + '-authorpop')" @mouseleave="closePop(comment.id + '-authorpop')" style="margin-bottom: 6px;">{{ $store.state.users[comment.user].nom }} <i v-if="$store.state.users[comment.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
+                  <span @mouseover="openPop(comment.id + '-authorpop')" @mouseleave="closePop(comment.id + '-authorpop')"><span v-if="$store.state.users[comment.user].job" style="display: inline;">{{ $store.state.users[comment.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> {{ dateMoment(comment.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(comment.comment.date).fromNow().slice(1) }}</span>
                   <p style="word-wrap: anywhere;" v-html="comment.comment.content"></p>
                   <!--<a style="cursor: pointer" @click="replyTo(comment)" class="active"><i class="fa fa-reply-all"></i>Répondre</a>-->
                 </div>
@@ -61,12 +67,15 @@
               <ul>
                 <li v-for="sub in comment.sub" :key="sub">
                   <div class="comment-list">
-                    <div class="bg-img">
+                    <div :id="sub.id + '-author'" class="bg-img" @mouseover="openPop(sub.id + '-authorpop')" @mouseleave="closePop(sub.id + '-authorpop')">
                       <span :style="{ 'background-image': 'url(' + $store.state.users[sub.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
                     </div>
+                    <b-popover :ref="sub.id + '-authorpop'" :target="sub.id + '-author'" placement="top">
+                      <ProfilePop :article="sub" :header="header" />
+                    </b-popover>
                     <div class="comment">
-                      <h3 style="margin-bottom: 6px;">{{ $store.state.users[sub.user].nom }} <i v-if="$store.state.users[sub.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
-                      <span><span v-if="$store.state.users[sub.user].job" style="display: inline;">{{ $store.state.users[sub.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> {{ dateMoment(sub.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(sub.comment.date).fromNow().slice(1) }}</span>
+                      <h3 @mouseover="openPop(sub.id + '-authorpop')" @mouseleave="closePop(sub.id + '-authorpop')" style="margin-bottom: 6px;">{{ $store.state.users[sub.user].nom }} <i v-if="$store.state.users[sub.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
+                      <span @mouseover="openPop(sub.id + '-authorpop')" @mouseleave="closePop(sub.id + '-authorpop')"><span v-if="$store.state.users[sub.user].job" style="display: inline;">{{ $store.state.users[sub.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> {{ dateMoment(sub.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(sub.comment.date).fromNow().slice(1) }}</span>
                       <p style="word-wrap: anywhere;" v-html="sub.comment.content"></p>
                     </div>
                   </div>
@@ -97,16 +106,30 @@
 
 <script>
 import VueMasonryWall from "vue-masonry-wall";
+import ProfilePop from "@/components/subcomponents/ProfilePop";
 
 export default {
   name: "PostArticle",
-  components: {VueMasonryWall},
+  components: {ProfilePop, VueMasonryWall},
   props: ["article", "header"],
   created() {
+    this.component_uid = Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
     setInterval(() => {
       this.$forceUpdate();
     }, 10e3)
     this.$props.article.post.vues++;
+  },
+  beforeMount() {
+    for(let com in this.$props.article.comments) {
+      let rand = Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
+      this.$props.article.comments[com].id = rand;
+      if(this.$props.article.comments[com]['sub']) {
+        for(let sub_com in this.$props.article.comments[com]['sub']) {
+          rand = Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
+          this.$props.article.comments[com]['sub'][sub_com].id = rand;
+        }
+      }
+    }
   },
   data() {
     return {
@@ -114,10 +137,36 @@ export default {
       reply: {
         replying: false,
         replyTo: null
-      }
+      },
+      component_uid: null,
+      openedPops: []
     }
   },
   methods: {
+    openPop(popId) {
+      if(this.openedPops.includes(popId)) {
+        return
+      }
+      this.openedPops.push(popId);
+      try {
+        this.$refs[popId].$emit('open')
+      } catch(e) {
+        this.$refs[popId][0].$emit('open')
+      }
+    },
+    closePop(popId) {
+      if(!this.openedPops.includes(popId)) {
+        return
+      }
+      console.log(popId);
+      console.log(this.$refs)
+      this.openedPops.splice(this.openedPops.indexOf(popId));
+      try {
+        this.$refs[popId].$emit('close')
+      } catch(e) {
+        this.$refs[popId][0].$emit('close')
+      }
+    },
     getCommentsArticle() {
       let coms = 0;
       for(let com in this.$props.article.comments) {
@@ -240,5 +289,8 @@ button {
 }
 .margin-nom {
   margin-bottom: 0px !important;
+}
+.usy-name h3 {
+  text-transform: none !important;
 }
 </style>

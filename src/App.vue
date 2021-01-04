@@ -84,20 +84,6 @@ export default {
     Header,
     Footer
   },
-  created() {
-    setTimeout(() => {
-      console.log(this.$auth.isAuthenticated)
-      if(this.$auth.isAuthenticated) {
-        if(this.$store.state.loggedInUser === 0) {
-          this.$store.state.users.push({
-            nom: this.$auth.user.name,
-            profile: this.$auth.user.picture
-          })
-          this.$store.state.loggedInUser = this.$store.state.users.length - 1
-        }
-      }
-    }, 5e3)
-  },
   data() {
     return {
       tendances: [

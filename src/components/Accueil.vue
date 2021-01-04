@@ -29,7 +29,7 @@ export default {
       msg: ""
     }
   },
-  created() {
+  mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   },
   methods: {
