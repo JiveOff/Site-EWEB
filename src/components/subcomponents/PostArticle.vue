@@ -2,7 +2,7 @@
   <div class="posty" style="margin-bottom: 20px">
     <div class="post-bar no-margin">
       <div class="post_topbar" style="border-top: 4px solid #3a55e4">
-        <div class="usy-dt" @mouseover="openPop(component_uid + '-authorpop-' + article.id)" @mouseleave="closePop(component_uid + '-authorpop-' + article.id)">
+        <div class="usy-dt" @mouseover="openPop(component_uid + '-authorpop-' + article.id)" @mouseleave="closePop(component_uid + '-authorpop-' + article.id)" @click="$router.push('/user/' + article.user)" style="cursor: pointer">
           <span :id="component_uid + '-author-' + article.id" :style="{ 'background-image': 'url(' + $store.state.users[article.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
           <div class="usy-name">
             <h3 :class="{ 'margin-nom': header }">{{ $store.state.users[article.user].nom }} <i v-if="$store.state.users[article.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
@@ -21,6 +21,8 @@
         <p v-if="article.post.warning" style="border-top: 1px solid #3a55e4; padding-top: 10px; color: #3a55e4; font-weight: 401; cursor: pointer; margin-top: 15px; margin-bottom: 0px;" @click="$router.push('/post/' + article.id)">
           <i class="fa fa-warning" style="margin-right: 10px;"></i><i style="word-wrap: anywhere; white-space: normal;">{{ article.post.warning }}</i>
         </p>
+
+        <Tweet v-if="article.id === 'anonymat' && $route.fullPath !== '/'" id="1341641955852337153"></Tweet>
 
         <ul class="skill-tags" style="display: contents; cursor: pointer" @click="$router.push('/post/' + article.id)">
           <li v-for="tag in article.post.tags" :key="tag" :class="{ 'margin-masonry': article.post.images }"><a>{{ tag }}</a></li>
@@ -51,13 +53,13 @@
           <ul>
             <li v-for="comment in article.comments" :key="comment" style="border-bottom: 1px solid rgb(229, 229, 229); margin-bottom: 17px;">
               <div class="comment-list" style="padding-bottom: 20px;">
-                <div :id="comment.id + '-author'" class="bg-img" @mouseover="openPop(comment.id + '-authorpop')" @mouseleave="closePop(comment.id + '-authorpop')">
+                <div :id="comment.id + '-author'" class="bg-img" @mouseover="openPop(comment.id + '-authorpop')" @mouseleave="closePop(comment.id + '-authorpop')"  @click="$router.push('/user/' + comment.user)" style="cursor: pointer">
                   <span :style="{ 'background-image': 'url(' + $store.state.users[comment.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
                 </div>
                 <b-popover :ref="comment.id + '-authorpop'" :target="comment.id + '-author'" placement="top">
                   <ProfilePop :article="comment" :header="header" />
                 </b-popover>
-                <div class="comment">
+                <div class="comment" @click="$router.push('/user/' + comment.user)" style="cursor: pointer">
                   <h3 @mouseover="openPop(comment.id + '-authorpop')" @mouseleave="closePop(comment.id + '-authorpop')" style="margin-bottom: 6px;">{{ $store.state.users[comment.user].nom }} <i v-if="$store.state.users[comment.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
                   <span @mouseover="openPop(comment.id + '-authorpop')" @mouseleave="closePop(comment.id + '-authorpop')"><span v-if="$store.state.users[comment.user].job" style="display: inline;">{{ $store.state.users[comment.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> {{ dateMoment(comment.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(comment.comment.date).fromNow().slice(1) }}</span>
                   <p style="word-wrap: anywhere;" v-html="comment.comment.content"></p>
@@ -67,13 +69,13 @@
               <ul>
                 <li v-for="sub in comment.sub" :key="sub">
                   <div class="comment-list">
-                    <div :id="sub.id + '-author'" class="bg-img" @mouseover="openPop(sub.id + '-authorpop')" @mouseleave="closePop(sub.id + '-authorpop')">
+                    <div :id="sub.id + '-author'" class="bg-img" @mouseover="openPop(sub.id + '-authorpop')" @mouseleave="closePop(sub.id + '-authorpop')"  @click="$router.push('/user/' + sub.user)" style="cursor: pointer">
                       <span :style="{ 'background-image': 'url(' + $store.state.users[sub.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
                     </div>
                     <b-popover :ref="sub.id + '-authorpop'" :target="sub.id + '-author'" placement="top">
                       <ProfilePop :article="sub" :header="header" />
                     </b-popover>
-                    <div class="comment">
+                    <div class="comment" @click="$router.push('/user/' + sub.user)" style="cursor: pointer">
                       <h3 @mouseover="openPop(sub.id + '-authorpop')" @mouseleave="closePop(sub.id + '-authorpop')" style="margin-bottom: 6px;">{{ $store.state.users[sub.user].nom }} <i v-if="$store.state.users[sub.user].verified" class="fa fa-check-circle" style="color: #aaaaaa;" v-b-tooltip.hover title="Profil vérifié"></i></h3>
                       <span @mouseover="openPop(sub.id + '-authorpop')" @mouseleave="closePop(sub.id + '-authorpop')"><span v-if="$store.state.users[sub.user].job" style="display: inline;">{{ $store.state.users[sub.user].job + ' • ' }}</span><i class="fa fa-clock-o"></i> {{ dateMoment(sub.comment.date).fromNow().charAt(0).toUpperCase() + dateMoment(sub.comment.date).fromNow().slice(1) }}</span>
                       <p style="word-wrap: anywhere;" v-html="sub.comment.content"></p>
@@ -107,10 +109,11 @@
 <script>
 import VueMasonryWall from "vue-masonry-wall";
 import ProfilePop from "@/components/subcomponents/ProfilePop";
+import { Tweet } from "vue-tweet-embed"
 
 export default {
   name: "PostArticle",
-  components: {ProfilePop, VueMasonryWall},
+  components: {ProfilePop, VueMasonryWall, Tweet},
   props: ["article", "header"],
   created() {
     this.component_uid = Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);

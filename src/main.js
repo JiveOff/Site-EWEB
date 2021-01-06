@@ -157,13 +157,54 @@ const store = new Vuex.Store({
       // 26
       {
         nom: "Fred",
-        job: "Modérateur du site",
+        job: "Modérateur de la brigade des réseaux",
         profile: "https://i.jiveoff.fr/inUc9.png"
       },
       // 27
       {
         nom: "Lisa",
         profile: "https://i.jiveoff.fr/jcmwJ.png"
+      },
+      // 28
+      {
+        nom: "Brèves de presse",
+        job: "Association de journalistes",
+        profile: "https://pbs.twimg.com/profile_images/972079166551220226/0uUHS4fZ_reasonably_small.jpg"
+      },
+      // 29
+      {
+        nom: "Wilson",
+        profile: "https://i.jiveoff.fr/BLZ8i.png"
+      },
+      // 30
+      {
+        nom: "Anonymous",
+        profile: "https://i.jiveoff.fr/xlorC.jpg"
+      },
+      // 31
+      {
+        nom: "Nathalie",
+        profile: "https://i.jiveoff.fr/rdjJv.jpg"
+      },
+      // 32
+      {
+        nom: "Edouard",
+        profile: "https://i.jiveoff.fr/B4Y27.jpg"
+      },
+      // 33
+      {
+        nom: "Dorian",
+        profile: "https://i.jiveoff.fr/fJlO7.png"
+      },
+      // 34
+      {
+        nom: "Leo",
+        profile: "https://i.jiveoff.fr/NscnR.png"
+      },
+      // 32
+      {
+        nom: "Elodie",
+        profile: "https://i.jiveoff.fr/9LO6r.jpg"
       }
     ],
     articles: [
@@ -194,7 +235,35 @@ const store = new Vuex.Store({
                 user: 2,
                 comment: {
                   date: "2020-12-19T04:55:48.821Z",
-                  content: "C'est un symbole permettant de retrouver les personnalités publiques... et pourquoi Twitter ne pourrais pas bannir le président du réseau social? Il ne font rien contre la fake news?"
+                  content: "C'est un symbole permettant de retrouver les personnalités publiques... et pourquoi la brigade des réseaux ne pourrais pas bannir le président du réseau social? Que font-ils face à la fake news?"
+                }
+              },
+              {
+                user: 7,
+                comment: {
+                  date: "2020-12-20T04:55:48.821Z",
+                  content: "Ils n'ont hélas pas ce pouvoir... son statut de président lui offre des privilèges et contourne certaines règles imposées par le réseau social mais ceci dit, il pourra bien sûr être retiré du réseau après le 20 Janvier, quand il perdra sa position de président des Etats-Unis. J'ai trouvé un article vraiment intéressant sur ce sujet, mais il est en Anglais: <a href='https://www.independent.co.uk/news/world/americas/us-election-2020/trump-twitter-ban-inauguration-biden-b1774105.html'>https://www.independent.co.uk/news/world/americas/us-election-2020/trump-twitter-ban-inauguration-biden-b1774105.html</a>"
+                }
+              },
+              {
+                user: 2,
+                comment: {
+                  date: "2020-12-20T04:55:48.821Z",
+                  content: "Ah d'accord, je viens de comprendre. C'est aussi pour ça que ses posts ont un message d'avertissement juste en dessous?"
+                }
+              },
+              {
+                user: 7,
+                comment: {
+                  date: "2020-12-21T04:55:48.821Z",
+                  content: "C'est ça."
+                }
+              },
+              {
+                user: 8,
+                comment: {
+                  date: "2020-12-21T04:55:48.821Z",
+                  content: "Voilà comment le président a riposté... on se croirait dans un film. <a href='https://www.lepoint.fr/monde/trump-signe-un-decret-pour-limiter-la-protection-des-reseaux-sociaux-28-05-2020-2377431_24.php'>https://www.lepoint.fr/monde/trump-signe-un-decret-pour-limiter-la-protection-des-reseaux-sociaux-28-05-2020-2377431_24.php</a>"
                 }
               }
             ]
@@ -285,6 +354,75 @@ const store = new Vuex.Store({
         ]
       },
       {
+        id: "anonymat",
+        user: 2,
+        post: {
+          date: "2020-12-20T04:55:48.821Z",
+          likes: 27,
+          liked: false,
+          vues: 564,
+          tags: [],
+          images: [],
+          content: "Je pense que l’anonymat est un sujet qui mérite d'être traité vu la situation actuelle. Il faut savoir que l’anonymat prend deux formes, le #pseudonymat à savoir se dissimuler derrière un pseudo ou un nom de code. Vous êtes donc pas réellement anonyme car votre e-mail, IP et d’autres informations sont accessibles selon le réseau social que vous utilisez mais pas exploitable (en tout cas pour l’instant). La deuxième forme concerne une minorité de personnes, c’est #anonymat absolu, basé sur l'utilisation de réseaux chiffrés ou bien de services d’anonymisation. Il est donc question ici de donner accès à nos informations personnelles (nom, prénom, etc) lorsqu’on utilise un réseau social. Je vous laisse donc débattre sur la question en commentaire, êtes-vous contre ou pour ? <br /><br />"
+        },
+        comments: [
+          {
+            user: 31,
+            comment: {
+              date: 1609179507000,
+              content: "Oui. Tout dépend bien sûr de l'utilisation de l'anonymat, mais il n'y a aucun contrôle. Les comptes devraient être supprimés dès la première insulte. Et les hébergeurs devraient demander une preuve d'identité pour la création d'un compte. Ainsi, les utilisateurs resteraient anonymes, mais leur identité serait connue de l'hébergeur."
+            },
+            sub: [
+              {
+                user: 30,
+                comment: {
+                  date: 1609462959424,
+                  content: "Vachement malin ça, donne encore plus d’informations à vendre pour Facebook, Twitter, etc.💵"
+                }
+              },
+              {
+                user: 32,
+                comment: {
+                  date: 1609462959424,
+                  content: "Je suis totalement d’accord avec vous, l'accès aux données personnelles des utilisateurs par l'hébergeur devrait se faire dès l'inscription afin de faciliter certaines enquêtes graves liées à des propos diffamatoires ou bien le partage de contenu à l'encontre de la loi. Il existe tellement de cas extrêmes tels que le partage de contenus pédopornographique, de contenus incitant au djihad ou bien récemment avec le meurtre de Samuel Paty. Dites-vous que les gens qui ont incité au meurtre ou partagé la vidéo de celui-ci ne sont pour certains même pas jugés."
+                }
+              },
+              {
+                user: 33,
+                comment: {
+                  date: 1609462959424,
+                  content: "D’ailleurs concernant l’histoire de Samuel Paty en juillet dernier, le premier ministre Jean Castex a réagi lors d’un entretien avec le parisien et a comparé les réseaux sociaux au \"régime de Vichy\". Je vous laisse le lien de l’article pour forger votre propre avis : <a href=”https://www.leparisien.fr/politique/attentat-de-conflans-castex-veut-creer-un-delit-de-mise-en-danger-sur-internet-20-10-2020-8404145.php”>https://www.leparisien.fr/politique/attentat-de-conflans-castex-veut-creer-un-delit-de-mise-en-danger-sur-internet-20-10-2020-8404145.php</a>. Ça me désole de voir que des contenus sont publiés et partagés en toute impunité et que des mineurs très influençables y aient accès. Les gens qui sont derrière tout cela doivent être jugés."
+                }
+              }
+            ]
+          },
+          {
+            user: 30,
+            comment: {
+              date: 1609265907000,
+              content: "Clairement, non, vu comment le Président exploite cette faille. Preuve à l’appui : <a href=”https://twitter.com/BFMTV/status/1086361987871899651?s=20”>https://twitter.com/BFMTV/status/1086361987871899651?s=20</a>, lorsque l’on s’attaque à l'anonymat, je suis désolé mais c’est une attaque à la liberté d’expression. Tout le monde a le droit d'être anonyme, lorsqu’une personne soumise par un régime marxisme risque parfois sa vie en informant de sa situation voire d’un peuple entier, il a clairement le droit d'être anonyme. Supprimer l’anonymat serait donner à l'État plus de pouvoir. Quoi qu'il en soit, si le Président Macron entend lancer un débat sur le sujet, sa conviction affirmée va à l'encontre d'un rapport des Nations Unies de 2015. Celui-ci considérait en effet le chiffrement et l'anonymat comme « nécessaires à l'exercice du droit à la liberté d'opinion et d'expression à l'ère numérique ». ✊"
+            },
+            sub: [
+              {
+                user: 34,
+                comment: {
+                  date: 1609462959424,
+                  content: "En plus de ça, on oublie une chose essentielle, retirer tout anonymat facilite la propagation du phénomène Doxxing, phénomène qui consiste à rechercher et révéler sur Internet des informations sur l'identité et la vie privée d’un individu avec comme objectif de nuire."
+                }
+              }
+            ]
+          },
+          {
+            user: 32,
+            comment: {
+              date: 1609265907000,
+              content: "Plutôt non. L'anonymat est une liberté importante, mais cela ne veut pas dire que les personnes ne sont plus responsables de ce qu'elles écrivent. Les réseaux sociaux ont été conçus comme un espace d'échange, Aujourd’hui, c’est surtout un lieu de danger et de haine, un exemple récent : pendant l’élection de Miss France 2021, April Benayoun a reçu de nombreuses insultes antisémites. Voilà l'article qui en parle <a href =”https://www.lefigaro.fr/actualite-france/miss-france-2021-enquete-ouverte-apres-des-tweets-antisemites-visant-miss-provence-20201221”></a>. <br />Il faut que les hébergeurs se donnent vraiment les moyens de lutter contre les dérives."
+            },
+            sub: []
+          }
+        ]
+      },
+      {
         id: "lois",
         user: 8,
         post: {
@@ -331,7 +469,7 @@ const store = new Vuex.Store({
                 user: 11,
                 comment: {
                   date: 1609462959424,
-                  content: "Attendez on peut vraiment être interpellé au tribunal si jamais on critique quelqu’un ou quelque chose??"
+                  content: "Attendez on peut vraiment être interpellé au tribunal si jamais on critique quelqu’un ou quelque chose?? 😱"
                 }
               },
               {
@@ -345,7 +483,7 @@ const store = new Vuex.Store({
                 user: 11,
                 comment: {
                   date: 1609462959424,
-                  content: "En 2011? c'était il y a longtemps alors. Aujourd'hui, il n’y a pas tout ça. On est libre de s'exprimer comme on veut. #LibertéD'Expression."
+                  content: "En 2011? c'était il y a longtemps alors. Aujourd'hui, il n’y a pas tout ça. On est libre de s'exprimer comme on veut. #LibertéDExpression."
                 }
               },
               {
@@ -391,7 +529,14 @@ const store = new Vuex.Store({
             user: 14,
             comment: {
               date: 1609462959424,
-              content: "Eh oui les gars! Donc vous feriez mieux de contrôler votre langue avant de publier, partager, commenter ou même de simplement liker un contenu biaisé."
+              content: "Eh oui les gars! Donc vous feriez mieux de contrôler votre langue avant de publier, partager, commenter ou même de simplement liker un contenu biaisé. 😬"
+            }
+          },
+          {
+            user: 1,
+            comment: {
+              date: "2020-12-20T04:55:48.821Z",
+              content: "Pour les curieux, j'ai trouvé des articles parlant de cette fameuse loi de sécurité globale et la loi Avia... la France est vraiment en train de perdre sa démocratie d'autrefois... <br /><br /><a href='https://fr.wikipedia.org/wiki/Loi_contre_les_contenus_haineux_sur_internet'>https://fr.wikipedia.org/wiki/Loi_contre_les_contenus_haineux_sur_internet</a><br/><a href='https://www.francetvinfo.fr/politique/proposition-de-loi-sur-la-securite-globale/securite-globale-l-article-a-lire-pour-comprendre-la-proposition-de-loi_4183579.html'>https://www.francetvinfo.fr/politique/proposition-de-loi-sur-la-securite-globale/securite-globale-l-article-a-lire-pour-comprendre-la-proposition-de-loi_4183579.html</a>"
             }
           }
         ]
@@ -457,7 +602,7 @@ const store = new Vuex.Store({
             user: 26,
             comment: {
               date: "2020-12-30T04:55:48.821Z",
-              content: "Je dois dire qu’on trouve de nombreux problèmes concernant la liberté d’expression, même sur ce site. Théoriquement, on a le droit d’écrire ce que l’on pense seulement si cela ne va pas nuire à autrui. Mais une minorité ne respectent pas les règles comme avec les trolls dont vous parlez notamment."
+              content: "Je dois dire qu’on trouve de nombreux problèmes concernant la liberté d’expression, même sur la brigade des réseaux. Théoriquement, on a le droit d’écrire ce que l’on pense seulement si cela ne va pas nuire à autrui. Mais une minorité ne respectent pas les règles comme avec les trolls dont vous parlez notamment."
             }
           },
           {
@@ -483,6 +628,7 @@ const store = new Vuex.Store({
 
 import Accueil from "@/components/Accueil";
 import Article from "@/components/Article";
+import User from "@/components/User";
 
 const routes = [
   {
@@ -492,6 +638,10 @@ const routes = [
   {
     path: '/post/:id',
     component: Article
+  },
+  {
+    path: '/user/:id',
+    component: User
   }
 ]
 
