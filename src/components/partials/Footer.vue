@@ -7,7 +7,7 @@
       Projet EWEB de DUT Informatique (1ère Année)<br/>
     </div>
     <div style="font-size: 15px; color: #999; text-align: center; margin-bottom: 20px;">
-      <a href="https://github.com/JiveOff" style="font-weight: 501">@JiveOff</a> • <a style="cursor: pointer;" @click="$router.push('/')">Accueil</a>
+      <a href="https://github.com/JiveOff" style="font-weight: 501">@JiveOff</a> • <a style="cursor: pointer;" @click="$router.push('/')">Accueil</a> • <a style="cursor: pointer;" @click="$router.push('/sources')">Sources</a>
     </div>
   </footer>
 </template>

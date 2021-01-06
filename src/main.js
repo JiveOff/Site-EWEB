@@ -629,6 +629,7 @@ const store = new Vuex.Store({
 import Accueil from "@/components/Accueil";
 import Article from "@/components/Article";
 import User from "@/components/User";
+import Sources from "@/components/Sources";
 
 const routes = [
   {
@@ -642,6 +643,10 @@ const routes = [
   {
     path: '/user/:id',
     component: User
+  },
+  {
+    path: '/sources',
+    component: Sources
   }
 ]
 
