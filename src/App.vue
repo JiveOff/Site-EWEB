@@ -14,7 +14,7 @@
               <div class="col-lg-3 col-md-3 pd-right-none side">
                 <div class="user-data full-width">
                   <div class="user-profile">
-                    <div class="username-dt" style="background: linear-gradient(#00000008, rgba(58, 85, 228, 0.81)), url('https://i.jiveoff.fr/CpJcK.jpg'); background-position-x: 39%; background-position-y: 50%;">
+                    <div class="username-dt" style="background: linear-gradient(rgba(0, 0, 0, 0.03), rgb(1, 79, 134)), url('https://i.jiveoff.fr/CpJcK.jpg'); background-position-x: 39%; background-position-y: 50%;">
                       <div class="usr-pic">
                         <img :src="$store.state.users[$store.state.loggedInUser].profile" alt="" width="100px" height="110px" style="background-color: #fff">
                       </div>
