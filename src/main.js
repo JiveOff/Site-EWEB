@@ -357,8 +357,8 @@ const store = new Vuex.Store({
         id: "anonymat",
         user: 2,
         post: {
-          date: "2020-12-20T04:55:48.821Z",
-          likes: 27,
+          date: "2020-12-23T04:55:48.821Z",
+          likes: 15,
           liked: false,
           vues: 564,
           tags: [],
