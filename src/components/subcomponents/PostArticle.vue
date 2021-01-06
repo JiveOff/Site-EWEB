@@ -1,7 +1,7 @@
 <template>
   <div class="posty" style="margin-bottom: 20px">
     <div class="post-bar no-margin">
-      <div class="post_topbar" style="border-top: 4px solid #3a55e4">
+      <div class="post_topbar" style="border-top: 4px solid #014F86">
         <div class="usy-dt" @mouseover="openPop(component_uid + '-authorpop-' + article.id)" @mouseleave="closePop(component_uid + '-authorpop-' + article.id)" @click="$router.push('/user/' + article.user)" style="cursor: pointer">
           <span :id="component_uid + '-author-' + article.id" :style="{ 'background-image': 'url(' + $store.state.users[article.user].profile + ')', 'width': '40px', 'height': '40px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover' }"></span>
           <div class="usy-name">
@@ -18,7 +18,7 @@
         <p v-if="$route.fullPath === '/' && article.post.content.length >= 200" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content.slice(0, 200) + '...'"> </span> <router-link :to="'/post/' + article.id">voir plus</router-link></p>
         <p v-else-if="$route.fullPath === '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
         <p v-else-if="$route.fullPath !== '/'" style="word-wrap: anywhere;" :style="[article.post.tags.length === 0 ? {'margin-bottom': '0px'} : {}]"><span @click="$router.push('/post/' + article.id)" style="cursor: pointer" v-html="article.post.content"></span></p>
-        <p v-if="article.post.warning" style="border-top: 1px solid #3a55e4; padding-top: 10px; color: #3a55e4; font-weight: 401; cursor: pointer; margin-top: 15px; margin-bottom: 0px;" @click="$router.push('/post/' + article.id)">
+        <p v-if="article.post.warning" style="border-top: 1px solid #014F86; padding-top: 10px; color: #014F86; font-weight: 401; cursor: pointer; margin-top: 15px; margin-bottom: 0px;" @click="$router.push('/post/' + article.id)">
           <i class="fa fa-warning" style="margin-right: 10px;"></i><i style="word-wrap: anywhere; white-space: normal;">{{ article.post.warning }}</i>
         </p>
 
@@ -273,7 +273,7 @@ export default {
   opacity: 0;
 }
 .liked {
-  color: #3a55e4 !important;
+  color: #014F86 !important;
 }
 button {
   color: #fff;

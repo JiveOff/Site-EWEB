@@ -38,7 +38,7 @@
                 <!--<div class="widget widget-about">
                   <router-link to="/"><img class="" src="@/assets/images/Logo-Site.png" style="width: 200px; margin-bottom: 20px;"></router-link>
                 </div>-->
-                <div class="widget widget-jobs" style="box-shadow: none; border-top: 4px solid #3a55e4">
+                <div class="widget widget-jobs" style="box-shadow: none; border-top: 4px solid #014F86">
                   <div class="sd-title">
                     <h3>Tendances en France</h3>
                   </div>

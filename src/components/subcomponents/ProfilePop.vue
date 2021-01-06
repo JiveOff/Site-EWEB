@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="authorpop">
-      <span :class="{ hasJob: !$store.state.users[article.user].job }" :style="{ 'background-image': 'url(' + $store.state.users[article.user].profile + ')', 'width': '80px', 'height': '80px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover', 'margin-right': '15px' }"><i v-if="$store.state.users[article.user].verified" class="fa fa-check-circle" style="color: #3a55e4; font-size: 25px; margin-top: 70%; margin-left: 70%" v-b-tooltip.hover title="Profil vérifié"></i></span>
+      <span :class="{ hasJob: !$store.state.users[article.user].job }" :style="{ 'background-image': 'url(' + $store.state.users[article.user].profile + ')', 'width': '80px', 'height': '80px', 'display': 'inline-block', 'float': 'left', 'background-position': 'center', 'border-radius': '100px', 'background-size': 'cover', 'margin-right': '15px' }"><i v-if="$store.state.users[article.user].verified" class="fa fa-check-circle" style="color: #014F86; font-size: 25px; margin-top: 70%; margin-left: 70%" v-b-tooltip.hover title="Profil vérifié"></i></span>
       <h3>{{ $store.state.users[article.user].nom }}</h3>
     </div>
     <span v-if="$store.state.users[article.user].job" style="color: #b2b2b2; font-size: 14px; display: inline-block">{{ $store.state.users[article.user].job }}</span>

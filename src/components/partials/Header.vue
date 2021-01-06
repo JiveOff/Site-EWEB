@@ -26,10 +26,10 @@
     </b-navbar>
     <transition name="slide-fade" mode="out-in">
       <b-navbar v-if="$route.fullPath === '/'" toggleable="lg" type="dark" style="
-      background: linear-gradient(rgba(0, 0, 0, 0), rgba(58, 85, 228, 0.81)), url('https://i.jiveoff.fr/CpJcK.jpg');
+      background: linear-gradient(rgba(0, 0, 0, 0), rgba(	1, 79, 134, 0.81)), url('https://i.jiveoff.fr/CpJcK.jpg');
       width: 100%;
       background-position-y: 16%;
-      border-bottom: 2px solid rgb(58, 85, 228);
+      border-bottom: 2px solid #014F86;
       display: block
     ">
         <h2 class="fake" style="text-align: center; font-size: 64px; margin-bottom: 25px; margin-top: 30px; font-family: 'Bebas Neue', cursive; color: #fff;">CECI EST UNE FAKE NEWS.</h2><br />
